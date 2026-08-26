@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- GENERATED FILE — Cat Lab → Cat Site → Publish writes this from
+     src/catsite/portfolio.html. Edit the template, not this. -->
+
+<title>El Meow Meow — Media Kit</title>
+<meta name="description" content="El Meow Meow is a cat with a following. Short-form video, photo posts and the occasional menace to furniture — here's the audience, and how to work with her.">
+<meta name="theme-color" content="#3a6ea5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="El Meow Meow — Media Kit">
+<meta property="og:description" content="El Meow Meow is a cat with a following. Short-form video, photo posts and the occasional menace to furniture — here's the audience, and how to work with her.">
+<!-- og:image: set a full https:// URL in Cat Site settings -->
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+
+<style>
+/* Same Windows 98 kit as the home page — one bevel, three colours. A media kit that
+   looked like a different site would undercut the thing it's selling. */
+:root {
+  --bg: #3a6ea5;
+  --face: #c0c0c0;
+  --ink: #000;
+  --ink-soft: #3f3f3f;
+  --ink-faint: #6b6b6b;
+  --accent: #000080;
+  --card: #fff;
+  --bevel-lt: #fff;
+  --bevel-hi: #dfdfdf;
+  --bevel-md: #808080;
+  --bevel-dk: #000;
+  --win: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --mono: "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+html { height: 100%; }
+body {
+  margin: 0; min-height: 100%;
+  background: var(--bg); color: var(--ink);
+  font: 13px/1.55 var(--win);
+  display: flex; justify-content: center; align-items: flex-start;
+  padding: 16px 12px 40px;
+}
+a { color: inherit; }
+
+.window {
+  width: 100%; max-width: 46rem;
+  background: var(--face); padding: 3px;
+  border: 2px solid;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md), 2px 2px 0 rgba(0,0,0,.35);
+}
+.titlebar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 3px 4px 5px; margin-bottom: 2px;
+  color: #fff; font-weight: 700; font-size: 12px;
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+}
+.titlebar .t { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titlebar b {
+  width: 17px; height: 15px; display: grid; place-items: center; font-size: 10px;
+  color: #000; background: var(--face);
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+.menubar { display: flex; gap: 14px; padding: 3px 6px; margin-bottom: 2px; font-size: 12px; }
+.menubar u { text-decoration: underline; }
+.pane { padding: 16px; }
+.statusbar { display: flex; gap: 3px; margin-top: 4px; font-size: 11px; }
+.statusbar span {
+  padding: 3px 6px;
+  border: 1px solid; border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
+}
+.statusbar span:first-child { flex: 1; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; font: 700 13px var(--win); color: #000;
+  background: var(--face); cursor: pointer; text-decoration: none;
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+.btn:active {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 var(--bevel-hi);
+  padding: 9px 13px 7px 15px;
+}
+.btn:focus-visible { outline: 2px dotted #000; outline-offset: -6px; }
+
+/* ---------- header ---------- */
+.top { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+.top .portrait {
+  width: 92px; height: 92px; flex: 0 0 auto; overflow: hidden;
+  display: grid; place-items: center; background: var(--card);
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+.top .portrait img, .top .portrait svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.top .who { flex: 1; min-width: 14rem; }
+h1 { margin: 0 0 2px; font-size: 22px; }
+.sub { margin: 0; color: var(--ink-soft); }
+.intro { margin: 12px 0 0; max-width: 46ch; color: var(--ink-soft); }
+
+hr.rule { margin: 18px 0; height: 2px; border: 0; border-top: 1px solid var(--bevel-md); border-bottom: 1px solid var(--bevel-hi); }
+
+h2 {
+  margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+
+/* ---------- the hero figure: one per page ----------
+   Total reach is the number a brand looks for first, so it gets the only
+   oversized type on the page. Proportional figures, not tabular — tabular
+   digits look loose at display sizes. */
+.hero {
+  background: var(--card); padding: 14px 16px; margin-bottom: 12px;
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+.hero .label { font-size: 12px; color: var(--ink-soft); }
+.hero .value { font-size: 48px; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; }
+.hero .foot { font-size: 11px; color: var(--ink-faint); }
+
+/* ---------- KPI row: one tile per platform ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.tile {
+  background: var(--face); padding: 12px;
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+/* Identity is the glyph + the name, never the number's colour — the values stay in
+   ink so they read as data rather than decoration. */
+.tile .head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.tile .glyph {
+  width: 26px; height: 26px; flex: 0 0 auto; display: grid; place-items: center;
+  background: var(--accent); color: #fff;
+}
+.tile .glyph svg { width: 15px; height: 15px; fill: currentColor; }
+.tile .name { font-weight: 700; }
+.tile .handle { font: 11px var(--mono); color: var(--ink-soft); }
+.metric { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 3px 0; }
+.metric .k { font-size: 12px; color: var(--ink-soft); }
+.metric .v { font-size: 17px; font-weight: 700; }
+.tile .note { margin: 8px 0 0; font-size: 11px; color: var(--ink-faint); }
+
+ul.services { margin: 0; padding-left: 18px; }
+ul.services li { margin-bottom: 4px; }
+.prose { margin: 0; color: var(--ink-soft); max-width: 60ch; }
+
+/* ---------- contact form ---------- */
+form { background: var(--face); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+label.f { display: block; margin-bottom: 10px; font-size: 12px; }
+label.f span { display: block; margin-bottom: 3px; color: var(--ink-soft); }
+input, textarea, select {
+  width: 100%; padding: 5px 6px; font: 13px var(--win); color: #000; background: #fff;
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+textarea { resize: vertical; min-height: 110px; font-family: var(--win); }
+.formfoot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.sent { font-size: 12px; color: var(--ink-soft); }
+.backlink { display: inline-block; margin-top: 16px; font-size: 12px; }
+
+footer { margin-top: 18px; text-align: center; font-size: 11px; color: var(--ink-faint); }
+</style>
+</head>
+
+<body>
+<div class="window">
+  <div class="titlebar">
+    <span class="t" id="tb-title"></span>
+    <span aria-hidden="true" style="display:flex;gap:2px"><b>_</b><b>□</b><b>✕</b></span>
+  </div>
+  <div class="menubar" aria-hidden="true">
+    <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>H</u>elp</span>
+  </div>
+
+  <div class="pane">
+    <div class="top">
+      <div class="portrait" id="portrait"></div>
+      <div class="who">
+        <h1 id="title"></h1>
+        <p class="sub" id="sub"></p>
+        <p class="intro" id="intro"></p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <section>
+      <h2>Audience</h2>
+      <div class="hero" id="hero" hidden>
+        <div class="label">Total following</div>
+        <div class="value" id="hero-value"></div>
+        <div class="foot" id="hero-foot"></div>
+      </div>
+      <div class="tiles" id="tiles"></div>
+      <p class="prose" id="audience-note" style="margin-top:12px"></p>
+    </section>
+
+    <section id="services-section" hidden>
+      <hr class="rule">
+      <h2>What we offer</h2>
+      <ul class="services" id="services"></ul>
+    </section>
+
+    <hr class="rule">
+
+    <section>
+      <h2 id="contact-heading"></h2>
+      <p class="prose" id="contact-note" style="margin-bottom:12px"></p>
+
+      <!-- No server, so no POST target. Submitting composes a mail in the visitor's
+           own client with everything filled in; the copy button covers webmail-only
+           machines where mailto: does nothing. -->
+      <form id="form" novalidate>
+        <div class="row2">
+          <label class="f"><span>Your name</span><input id="f-name" name="name" autocomplete="name" required></label>
+          <label class="f"><span>Company (optional)</span><input id="f-company" name="company" autocomplete="organization"></label>
+        </div>
+        <div class="row2">
+          <label class="f"><span>Your email</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+          <label class="f"><span>Subject</span>
+            <select id="f-subject" name="subject">
+              <option>Sponsored post enquiry</option>
+              <option>Brand partnership</option>
+              <option>Product gifting</option>
+              <option>Press / interview</option>
+              <option>Something else</option>
+            </select>
+          </label>
+        </div>
+        <label class="f"><span>Message</span><textarea id="f-message" name="message" required
+          placeholder="What are you working on, roughly when, and what does a good result look like?"></textarea></label>
+        <div class="formfoot">
+          <button class="btn" type="submit">✉ Send email</button>
+          <button class="btn" type="button" id="copy">Copy address</button>
+          <span class="sent" id="sent"></span>
+        </div>
+      </form>
+    </section>
+
+    <a class="backlink" href="../" id="back">← Back to links</a>
+
+    <footer><span id="footer-text"></span></footer>
+  </div>
+
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="obj-count"></span></div>
+</div>
+
+<script>
+/* Written by the Cat Lab publisher. Edit the site in the app, not here. */
+const CONFIG = {
+  "windowTitle": "Media Kit",
+  "title": "El Meow Meow",
+  "subtitle": "Official links · est. 2026",
+  "intro": "El Meow Meow is a cat with a following. Short-form video, photo posts and the occasional menace to furniture — here's the audience, and how to work with her.",
+  "audienceNote": "",
+  "services": [
+    "Sponsored short-form video",
+    "Photo post + stories",
+    "Product review",
+    "Brand ambassador (monthly)"
+  ],
+  "statsAsOf": "",
+  "contactHeading": "Work with El Meow Meow",
+  "contactNote": "Tell us what you have in mind and we'll come back to you within a couple of days.",
+  "contactEmail": "elmeowmeowbusiness@gmail.com",
+  "backLabel": "← Back to links",
+  "footer": "© 2026 · all naps reserved",
+  "photo": "../photos/portrait.jpeg",
+  "stats": [
+    {
+      "label": "Instagram",
+      "handle": null,
+      "url": null,
+      "icon": "instagram",
+      "followers": null,
+      "avgViews": null,
+      "avgLikes": null,
+      "engagement": null,
+      "note": null
+    },
+    {
+      "label": "TikTok",
+      "handle": null,
+      "url": null,
+      "icon": "tiktok",
+      "followers": null,
+      "avgViews": null,
+      "avgLikes": null,
+      "engagement": null,
+      "note": null
+    },
+    {
+      "label": "Facebook",
+      "handle": null,
+      "url": null,
+      "icon": "facebook",
+      "followers": null,
+      "avgViews": null,
+      "avgLikes": null,
+      "engagement": null,
+      "note": null
+    }
+  ]
+};
+
+const ICONS = {
+  instagram: "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077",
+
+  facebook: "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z",
+
+  tiktok: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+
+  youtube: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z",
+
+  x: "M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z",
+
+  email: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
+
+  link: "M10.6 13.4a1 1 0 0 1 0-1.4l1.4-1.4a1 1 0 0 1 1.4 1.4l-1.4 1.4a1 1 0 0 1-1.4 0zM7.8 16.2a4 4 0 0 1 0-5.7l2.1-2.1 1.4 1.4-2.1 2.1a2 2 0 0 0 2.8 2.8l2.1-2.1 1.4 1.4-2.1 2.1a4 4 0 0 1-5.6 0zm8.4-8.4a4 4 0 0 1 0 5.7l-2.1 2.1-1.4-1.4 2.1-2.1a2 2 0 1 0-2.8-2.8L9.9 11.4 8.5 10l2.1-2.1a4 4 0 0 1 5.6 0z"
+};
+
+const CAT_PLACEHOLDER = `
+<svg viewBox="0 0 100 100" role="img" aria-label="Portrait placeholder">
+  <rect width="100" height="100" fill="#000080" opacity=".12"/>
+  <path d="M22 44 L26 20 L44 33 A44 44 0 0 1 56 33 L74 20 L78 44 Z" fill="currentColor"/>
+  <circle cx="50" cy="60" r="27" fill="currentColor"/>
+  <circle cx="40" cy="56" r="4.2" fill="#fff"/><circle cx="60" cy="56" r="4.2" fill="#fff"/>
+  <path d="M50 66 l-4 3.5 4 3 4-3z" fill="#fff"/>
+</svg>`;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+/** 12_900 → "12.9K". Compact so a tile never wraps, per the stat-tile contract. */
+const compact = (n) =>
+  new Intl.NumberFormat(undefined, { notation: "compact", maximumFractionDigits: 1 }).format(n);
+
+function renderPortrait() {
+  const box = $("portrait");
+  box.innerHTML = CAT_PLACEHOLDER;
+  if (!CONFIG.photo) return;
+  const img = new Image();
+  img.alt = "Portrait";
+  img.addEventListener("load", () => { box.innerHTML = ""; box.appendChild(img); });
+  img.src = CONFIG.photo;
+}
+
+function renderStats() {
+  const stats = CONFIG.stats || [];
+
+  // The hero is the sum of every follower count we actually have. If none are filled
+  // in, the block stays hidden rather than announcing "0".
+  const total = stats.reduce((n, s) => n + (s.followers || 0), 0);
+  if (total > 0) {
+    $("hero").hidden = false;
+    $("hero-value").textContent = compact(total);
+    const across = stats.filter((s) => s.followers).map((s) => s.label).join(" · ");
+    $("hero-foot").textContent = [across, CONFIG.statsAsOf && `as of ${CONFIG.statsAsOf}`]
+      .filter(Boolean).join(" — ");
+  }
+
+  const frag = document.createDocumentFragment();
+  stats.forEach((s) => {
+    const metrics = [
+      ["Followers", s.followers != null ? compact(s.followers) : null],
+      ["Avg. views", s.avgViews != null ? compact(s.avgViews) : null],
+      ["Avg. likes", s.avgLikes != null ? compact(s.avgLikes) : null],
+      ["Engagement", s.engagement || null],
+    ].filter(([, v]) => v);
+    if (!metrics.length && !s.note) return;   // nothing to say about this platform yet
+
+    const el = document.createElement(s.url ? "a" : "div");
+    el.className = "tile";
+    if (s.url) { el.href = s.url; el.target = "_blank"; el.rel = "noopener noreferrer"; el.style.textDecoration = "none"; }
+    el.innerHTML = `
+      <div class="head">
+        <span class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[s.icon] || ICONS.link}"/></svg></span>
+        <span>
+          <span class="name">${esc(s.label)}</span>
+          ${s.handle ? `<br><span class="handle">${esc(s.handle)}</span>` : ""}
+        </span>
+      </div>
+      ${metrics.map(([k, v]) => `<div class="metric"><span class="k">${k}</span><span class="v">${esc(v)}</span></div>`).join("")}
+      ${s.note ? `<p class="note">${esc(s.note)}</p>` : ""}`;
+    frag.appendChild(el);
+  });
+  $("tiles").appendChild(frag);
+}
+
+function renderServices() {
+  const items = (CONFIG.services || []).filter(Boolean);
+  if (!items.length) return;
+  $("services-section").hidden = false;
+  $("services").innerHTML = items.map((s) => `<li>${esc(s)}</li>`).join("");
+}
+
+/** Builds the mailto: the form submits to. Everything the sender typed goes in the
+ *  body, so the reply-to address is visible even though mailto: can't set one. */
+function mailtoFor() {
+  const name = $("f-name").value.trim();
+  const company = $("f-company").value.trim();
+  const email = $("f-email").value.trim();
+  const subject = $("f-subject").value;
+  const message = $("f-message").value.trim();
+
+  const body = [
+    `From: ${name}${company ? ` (${company})` : ""}`,
+    `Reply to: ${email}`,
+    "",
+    message,
+  ].join("\n");
+
+  return `mailto:${CONFIG.contactEmail}` +
+    `?subject=${encodeURIComponent(`[${subject}] ${name || "Website enquiry"}`)}` +
+    `&body=${encodeURIComponent(body)}`;
+}
+
+function wireForm() {
+  const form = $("form");
+  const sent = $("sent");
+
+  if (!CONFIG.contactEmail) {
+    form.hidden = true;
+    return;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const missing = ["f-name", "f-email", "f-message"].filter((id) => !$(id).value.trim());
+    if (missing.length) {
+      sent.textContent = "Please fill in your name, email and a message.";
+      $(missing[0]).focus();
+      return;
+    }
+    sent.textContent = "Opening your email app…";
+    window.location.href = mailtoFor();
+  });
+
+  $("copy").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(CONFIG.contactEmail);
+      sent.textContent = `Copied ${CONFIG.contactEmail}`;
+    } catch {
+      // Clipboard is blocked outside a secure context or without permission —
+      // showing the address is a perfectly good fallback.
+      sent.textContent = CONFIG.contactEmail;
+    }
+  });
+}
+
+function render() {
+  $("tb-title").textContent = CONFIG.windowTitle || "Media Kit";
+  $("title").textContent = CONFIG.title || "";
+  $("sub").textContent = CONFIG.subtitle || "";
+  $("intro").textContent = CONFIG.intro || "";
+  $("audience-note").textContent = CONFIG.audienceNote || "";
+  $("contact-heading").textContent = CONFIG.contactHeading || "Get in touch";
+  $("contact-note").textContent = CONFIG.contactNote || "";
+  $("footer-text").textContent = CONFIG.footer || "";
+  $("status-text").textContent = CONFIG.statsAsOf ? `Figures as of ${CONFIG.statsAsOf}` : "Ready";
+  $("obj-count").textContent = `${(CONFIG.stats || []).length} platform(s)`;
+  $("back").textContent = CONFIG.backLabel || "← Back to links";
+
+  renderPortrait();
+  renderStats();
+  renderServices();
+  wireForm();
+}
+
+render();
+</script>
+</body>
+</html>

@@ -148,6 +148,21 @@ h1 { margin: 0; font-size: clamp(1.25rem, 5.5vw, 1.7rem); font-weight: 700; line
 .link .chev svg { width: 15px; height: 15px; }
 
 
+/* ---------- media-kit button ---------- */
+.cta { margin: 12px 0 0; text-align: center; }
+.cta[hidden] { display: none; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; font-weight: 700; color: #000; background: var(--face);
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+.cta-btn:active {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 var(--bevel-hi);
+  padding: 10px 17px 8px 19px;
+}
+
 /* ---------- photos ---------- */
 .gallery { margin-top: 16px; }
 .gallery[hidden] { display: none; }
@@ -208,6 +223,8 @@ footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--ink
 
     <nav class="links" id="links" aria-label="Official links"></nav>
 
+    <p class="cta" id="cta" hidden><a class="cta-btn" id="cta-link" href="portfolio/"></a></p>
+
     <section class="gallery" id="gallery" hidden>
       <h2 id="gallery-title"></h2>
       <div class="tiles" id="tiles"></div>
@@ -222,6 +239,10 @@ footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--ink
 <script>
 /* Written by the Cat Lab publisher. Edit the site in the app, not here. */
 const CONFIG = {
+  "portfolio": {
+    "href": "portfolio/",
+    "label": "Work with us →"
+  },
   "title": "El Meow Meow",
   "eyebrow": "Official links · est. 2026",
   "tagline": "Professional loaf. Occasional menace. All her official accounts live here.",
@@ -380,6 +401,11 @@ function render() {
   $("status-text").textContent = CONFIG.statusText || "Done";
   $("obj-count").textContent = `${(CONFIG.links || []).length} object(s)`;
   $("footer-text").textContent = CONFIG.footer || "";
+  if (CONFIG.portfolio) {
+    $("cta").hidden = false;
+    $("cta-link").href = CONFIG.portfolio.href;
+    $("cta-link").textContent = CONFIG.portfolio.label;
+  }
   renderPortrait();
   renderLinks();
   renderGallery();
