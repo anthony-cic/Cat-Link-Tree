@@ -96,6 +96,8 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid; border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
 }
 .statusbar span:first-child { flex: 1; }
+/* `hidden` loses to any explicit display, so say it again. */
+.statusbar span[hidden] { display: none; }
 
 /* ---------- hero ---------- */
 .hero { text-align: center; }
@@ -233,7 +235,7 @@ footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--ink
     <footer><span id="footer-text"></span></footer>
   </div>
 
-  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="obj-count"></span></div>
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="visits" hidden></span><span id="obj-count"></span></div>
 </div>
 
 <script>
@@ -300,7 +302,8 @@ const CONFIG = {
       "url": "mailto:elmeowmeowbusiness@gmail.com",
       "icon": "email"
     }
-  ]
+  ],
+  "apiBase": "https://api.elmeowmeow.com"
 };
 
 const ICONS = {
@@ -401,12 +404,32 @@ function renderLinks() {
   $("links").appendChild(frag);
 }
 
+/** Total visits, counted by the Worker at CONFIG.apiBase. Fire-and-forget: the
+ *  page is complete without it, so any failure leaves the field hidden rather
+ *  than putting an error in front of a visitor. Both pages call this, so the
+ *  total counts views of either. */
+async function renderVisits() {
+  if (!CONFIG.apiBase) return;
+  try {
+    const res = await fetch(`${CONFIG.apiBase}/hit`);
+    if (!res.ok) return;
+    const { visits } = await res.json();
+    if (typeof visits !== "number") return;
+    const el = $("visits");
+    el.textContent = `${visits.toLocaleString()} visits`;
+    el.hidden = false;
+  } catch {
+    /* offline, blocked, or the Worker is down - stay quiet */
+  }
+}
+
 function render() {
   $("tb-title").textContent = CONFIG.windowTitle || "Official Links";
   $("eyebrow").textContent = CONFIG.eyebrow || "";
   $("title").textContent = CONFIG.title || "";
   $("tagline").textContent = CONFIG.tagline || "";
   $("status-text").textContent = CONFIG.statusText || "Done";
+  renderVisits();
   $("obj-count").textContent = `${(CONFIG.links || []).length} object(s)`;
   $("footer-text").textContent = CONFIG.footer || "";
   if (CONFIG.portfolio) {

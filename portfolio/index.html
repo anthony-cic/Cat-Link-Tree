@@ -76,6 +76,8 @@ a { color: inherit; }
   border: 1px solid; border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
 }
 .statusbar span:first-child { flex: 1; }
+/* `hidden` loses to any explicit display, so say it again. */
+.statusbar span[hidden] { display: none; }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -170,6 +172,9 @@ input, textarea, select {
 textarea { resize: vertical; min-height: 110px; font-family: var(--win); }
 .formfoot { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
 .sent { font-size: 12px; color: var(--ink-soft); }
+/* Honeypot. Moved off-screen rather than display:none — the better bots skip
+   fields that are genuinely hidden, and the point is that they fill this one. */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .backlink { display: inline-block; margin-top: 16px; font-size: 12px; }
 
 footer { margin-top: 18px; text-align: center; font-size: 11px; color: var(--ink-faint); }
@@ -229,10 +234,17 @@ footer { margin-top: 18px; text-align: center; font-size: 11px; color: var(--ink
       <h2 id="contact-heading"></h2>
       <p class="prose" id="contact-note" style="margin-bottom:12px"></p>
 
-      <!-- No server, so no POST target. Submitting composes a mail in the visitor's
-           own client with everything filled in; the copy button covers webmail-only
+      <!-- Posts to the Worker at CONFIG.apiBase, which sends the mail. With no
+           apiBase set - or if the Worker can't be reached - this falls back to
+           composing a message in the visitor's own client, which is what it did
+           before there was a server at all. The copy button covers webmail-only
            machines where mailto: does nothing. -->
       <form id="form" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </label>
+        </div>
         <div class="row2">
           <label class="f"><span>Your name</span><input id="f-name" name="name" autocomplete="name" required></label>
           <label class="f"><span>Company (optional)</span><input id="f-company" name="company" autocomplete="organization"></label>
@@ -264,7 +276,7 @@ footer { margin-top: 18px; text-align: center; font-size: 11px; color: var(--ink
     <footer><span id="footer-text"></span></footer>
   </div>
 
-  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="obj-count"></span></div>
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="visits" hidden></span><span id="obj-count"></span></div>
 </div>
 
 <script>
@@ -285,6 +297,7 @@ const CONFIG = {
   "contactHeading": "Work with El Meow Meow",
   "contactNote": "Tell us what you have in mind and we'll get back to you after a cat nap or two",
   "contactEmail": "elmeowmeowbusiness@gmail.com",
+  "apiBase": "https://api.elmeowmeow.com",
   "backLabel": "← Back to links",
   "footer": "© 2026 · all naps reserved",
   "photo": "../photos/portrait.jpeg",
@@ -427,46 +440,104 @@ function renderServices() {
   $("services").innerHTML = items.map((s) => `<li>${esc(s)}</li>`).join("");
 }
 
-/** Builds the mailto: the form submits to. Everything the sender typed goes in the
- *  body, so the reply-to address is visible even though mailto: can't set one. */
+/** Builds the mailto: used when there's no Worker, or when it can't be reached.
+ *  Everything typed goes in the body, so the reply-to address is visible even
+ *  though mailto: has no way to set one. */
 function mailtoFor() {
-  const name = $("f-name").value.trim();
-  const company = $("f-company").value.trim();
-  const email = $("f-email").value.trim();
-  const subject = $("f-subject").value;
-  const message = $("f-message").value.trim();
-
+  const f = readForm();
   const body = [
-    `From: ${name}${company ? ` (${company})` : ""}`,
-    `Reply to: ${email}`,
+    `From: ${f.name}${f.company ? ` (${f.company})` : ""}`,
+    `Reply to: ${f.email}`,
     "",
-    message,
+    f.message,
   ].join("\n");
 
   return `mailto:${CONFIG.contactEmail}` +
-    `?subject=${encodeURIComponent(`[${subject}] ${name || "Website enquiry"}`)}` +
+    `?subject=${encodeURIComponent(`[${f.subject}] ${f.name || "Website enquiry"}`)}` +
     `&body=${encodeURIComponent(body)}`;
+}
+
+function readForm() {
+  return {
+    name: $("f-name").value.trim(),
+    company: $("f-company").value.trim(),
+    email: $("f-email").value.trim(),
+    subject: $("f-subject").value,
+    message: $("f-message").value.trim(),
+    // The honeypot. Sent as-is: the server decides what it means, not the page.
+    website: $("f-website").value,
+  };
 }
 
 function wireForm() {
   const form = $("form");
   const sent = $("sent");
+  const submit = form.querySelector('button[type="submit"]');
+  const api = CONFIG.apiBase || "";
 
   if (!CONFIG.contactEmail) {
     form.hidden = true;
     return;
   }
 
-  form.addEventListener("submit", (e) => {
+  // Without a Worker the button can only ever open a mail client, so say so.
+  if (!api) submit.textContent = "✉ Compose email";
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
     const missing = ["f-name", "f-email", "f-message"].filter((id) => !$(id).value.trim());
     if (missing.length) {
       sent.textContent = "Please fill in your name, email and a message.";
       $(missing[0]).focus();
       return;
     }
-    sent.textContent = "Opening your email app…";
-    window.location.href = mailtoFor();
+
+    if (!api) {
+      sent.textContent = "Opening your email app…";
+      window.location.href = mailtoFor();
+      return;
+    }
+
+    const f = readForm();
+    submit.disabled = true;
+    sent.textContent = "Sending…";
+
+    try {
+      const res = await fetch(`${api}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          // Company rides along in the name so it lands in the email's From line
+          // without needing a field of its own on the server.
+          name: f.company ? `${f.name} (${f.company})` : f.name,
+          email: f.email,
+          subject: f.subject,
+          message: f.message,
+          website: f.website,
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok) {
+        form.reset();
+        sent.textContent = "Sent — thanks, we'll be in touch shortly.";
+      } else {
+        // The server's own wording is more specific than anything generic here
+        // (rate limited, daily cap reached, a named invalid field).
+        sent.textContent = data.error || "That didn't go through — please try again.";
+        if (data.fallback) sent.textContent += ` (${data.fallback})`;
+      }
+    } catch {
+      // Offline, DNS failure, a blocking extension. The message the visitor
+      // typed is still in the form, so hand it to their mail client instead
+      // of losing it.
+      sent.textContent = "Couldn't reach the server — opening your email app instead…";
+      window.location.href = mailtoFor();
+    } finally {
+      submit.disabled = false;
+    }
   });
 
   $("copy").addEventListener("click", async () => {
@@ -474,11 +545,29 @@ function wireForm() {
       await navigator.clipboard.writeText(CONFIG.contactEmail);
       sent.textContent = `Copied ${CONFIG.contactEmail}`;
     } catch {
-      // Clipboard is blocked outside a secure context or without permission —
+      // Clipboard is blocked outside a secure context or without permission -
       // showing the address is a perfectly good fallback.
       sent.textContent = CONFIG.contactEmail;
     }
   });
+}
+
+/** Total visits, counted by the Worker. Deliberately fire-and-forget: the page
+ *  is complete without it, so a failure leaves the field hidden rather than
+ *  putting an error in the status bar. */
+async function renderVisits() {
+  if (!CONFIG.apiBase) return;
+  try {
+    const res = await fetch(`${CONFIG.apiBase}/hit`);
+    if (!res.ok) return;
+    const { visits } = await res.json();
+    if (typeof visits !== "number") return;
+    const el = $("visits");
+    el.textContent = `${visits.toLocaleString()} visits`;
+    el.hidden = false;
+  } catch {
+    /* offline, blocked, or the Worker is down - stay quiet */
+  }
 }
 
 function render() {
@@ -498,6 +587,7 @@ function render() {
   renderStats();
   renderServices();
   wireForm();
+  renderVisits();
 }
 
 render();
