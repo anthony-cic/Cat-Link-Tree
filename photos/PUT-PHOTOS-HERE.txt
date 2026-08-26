@@ -1,0 +1,20 @@
+Photos of the cat go in this folder.
+
+The site looks for these names by default (change them in CONFIG at the
+bottom of index.html if you'd rather use your own):
+
+  portrait.jpg    square, ~600x600      the portrait at the top of the page
+  wallpaper.jpg   landscape, ~1920 wide the desktop background ("desktop" theme)
+  photo-1.jpg     square-ish            gallery tile 1
+  photo-2.jpg                           gallery tile 2
+  photo-3.jpg                           gallery tile 3
+  photo-4.jpg                           gallery tile 4
+  photo-5.jpg                           gallery tile 5
+  photo-6.jpg                           gallery tile 6
+
+Nothing breaks if a file is missing - that slot just shows a labelled
+placeholder instead. Drop a file in, refresh, and it appears.
+
+Compress before committing: 1200px on the long edge at ~80% JPEG quality
+is plenty. Straight-from-the-phone photos are ~4MB each and will make the
+page feel slow on mobile.

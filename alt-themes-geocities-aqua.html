@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en" data-theme="retro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- NOTE: everything in this <head> is public the moment the site is live —
+     it shows up in search results and link previews. It deliberately does NOT
+     contain the name. On reveal day, swap the four strings below. -->
+<title>🐾 Official Links</title>
+<meta name="description" content="Every official account, in one place. Name reveal pending.">
+<meta name="theme-color" content="#efe4d2">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="🐾 Official Links">
+<meta property="og:description" content="Every official account, in one place. Name reveal pending.">
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+
+   Four themes. Each redefines the SAME variable names, so all the
+   layout below is written once and never duplicated. Switching is
+   one attribute on <html>.
+
+     retro  — warm paper, editorial
+     win98  — Windows 98 desktop window
+     geo    — 1999 GeoCities personal homepage
+     aqua   — Mac OS X 10.1 "Aqua", pinstripes and gel
+   ============================================================ */
+
+:root {
+  --maxw: 33rem;
+  --gap: 0.75rem;
+  --ease: cubic-bezier(.2, .8, .3, 1);
+
+  /* Period-correct type stacks. None of these need downloading —
+     they've shipped with every OS since the era they're imitating. */
+  --stack-win: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --stack-mac: "Lucida Grande", "Lucida Sans Unicode", "Segoe UI", Verdana, sans-serif;
+  --stack-comic: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+  --stack-times: "Times New Roman", Times, Georgia, serif;
+}
+
+/* ---------- RETRO — warm paper ---------- */
+[data-theme="retro"] {
+  --bg: #efe4d2;  --ink: #221d19;  --ink-soft: #6b5f52;
+  --accent: #c2432a;  --card: #fffaf0;  --border: #221d19;
+  --border-w: 2px;  --radius: 14px;
+  --shadow: 5px 5px 0 var(--border);
+  --shadow-hover: 8px 8px 0 var(--border);
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --display-weight: 900;  --display-size: clamp(2.1rem, 9vw, 3.4rem);
+  --display-spacing: -.02em;  --display-transform: none;
+  --icon-bg: var(--ink);  --icon-fg: var(--card);  --icon-radius: 50%;
+  --pane-pad: 0;
+  color-scheme: light;
+}
+
+/* ---------- WIN98 — the desktop window ---------- */
+[data-theme="win98"] {
+  --bg: #3a6ea5;              /* the default Win98 desktop blue */
+  --ink: #000;  --ink-soft: #3f3f3f;
+  --accent: #000080;  --card: #fff;
+  --face: #c0c0c0;            /* button face grey */
+  --bevel-lt: #fff;  --bevel-md: #808080;  --bevel-dk: #000;
+  --border: #808080;  --border-w: 1px;  --radius: 0;
+  --shadow: none;  --shadow-hover: none;
+  --font-display: var(--stack-win);
+  --font-body: var(--stack-win);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.3rem, 5.5vw, 1.85rem);
+  --display-spacing: 0;  --display-transform: none;
+  --icon-bg: #000080;  --icon-fg: #fff;  --icon-radius: 0;
+  --pane-pad: 14px;  --gap: 4px;  --maxw: 30rem;
+  color-scheme: light;
+}
+
+/* ---------- GEO — 1999 personal homepage ---------- */
+[data-theme="geo"] {
+  --bg: #fdf6e3;
+  --ink: #1a1a4e;  --ink-soft: #5a5a7a;
+  --accent: #0000ee;          /* the one true hyperlink blue */
+  --accent-2: #cc0000;
+  --card: #ffffff;
+  --border: #9a9ac0;  --border-w: 1px;  --radius: 0;
+  --shadow: 3px 3px 0 rgba(26,26,78,.25);
+  --shadow-hover: 3px 3px 0 rgba(26,26,78,.25);
+  --font-display: var(--stack-comic);
+  --font-body: var(--stack-times);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.6rem, 7vw, 2.4rem);
+  --display-spacing: 0;  --display-transform: none;
+  --icon-bg: transparent;  --icon-fg: #1a1a4e;  --icon-radius: 0;
+  --pane-pad: 14px;  --gap: .5rem;
+  color-scheme: light;
+}
+
+/* ---------- AQUA — Mac OS X 10.1 ---------- */
+[data-theme="aqua"] {
+  --bg: #dfe6ef;
+  --ink: #1c1c1e;  --ink-soft: #63676e;
+  --accent: #2d7bd4;  --card: #fff;
+  --border: #a8b0bb;  --border-w: 1px;  --radius: 8px;
+  --shadow: 0 1px 2px rgba(20,30,50,.12);
+  --shadow-hover: 0 3px 10px rgba(20,40,80,.22);
+  --font-display: var(--stack-mac);
+  --font-body: var(--stack-mac);
+  --font-mono: Monaco, "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.5rem, 6.5vw, 2.2rem);
+  --display-spacing: -.01em;  --display-transform: none;
+  --icon-bg: linear-gradient(180deg, #fdfdfd, #dfe4ea);
+  --icon-fg: #33383f;  --icon-radius: 9px;
+  --pane-pad: 16px;
+  color-scheme: light;
+}
+
+/* ============================================================
+   2. BASE — written once, against the variables above
+   ============================================================ */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem) 1.25rem 3rem;
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+  overflow-x: hidden;
+}
+[data-theme="retro"] body, [data-theme="geo"] body { -webkit-font-smoothing: antialiased; }
+
+a { color: inherit; text-decoration: none; }
+
+/* --- full-bleed decorative layers; each theme lights up its own --- */
+.layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0; }
+
+[data-theme="retro"] .layer--grain {
+  opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+}
+
+/* The tiled wallpaper. A 40px SVG tile, exactly how every 1999 page
+   did it — except this one is 400 bytes instead of a background.gif. */
+[data-theme="geo"] .layer--tile {
+  opacity: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%23fdf6e3'/%3E%3Cpath d='M0 20h40M20 0v40' stroke='%23eee3c4' stroke-width='2'/%3E%3Ccircle cx='10' cy='10' r='2.4' fill='%23f7c8dd'/%3E%3Ccircle cx='30' cy='30' r='2.4' fill='%23bfe3f2'/%3E%3Cpath d='M28 8l1.6 3.4 3.4 1.6-3.4 1.6L28 18l-1.6-3.4-3.4-1.6 3.4-1.6z' fill='%23f2e0a0'/%3E%3C/svg%3E");
+}
+
+/* Aqua's horizontal pinstripes — 1px lines, exactly as Apple shipped them. */
+[data-theme="aqua"] .layer--tile {
+  opacity: 1;
+  background:
+    linear-gradient(180deg, #eaf0f8, #ccd7e6),
+    repeating-linear-gradient(180deg, rgba(255,255,255,.85) 0 1px, transparent 1px 4px);
+  background-blend-mode: overlay;
+}
+
+.shell { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); }
+
+/* ============================================================
+   3. WINDOW CHROME — title bar, pane, status bar.
+   Present in the DOM for every theme, but display:none unless a
+   theme opts in. Costs nothing when unused.
+   ============================================================ */
+.titlebar, .statusbar, .construction, .counter, .ticker, .netscape { display: none; }
+
+/* --- WIN98 window --- */
+[data-theme="win98"] .shell {
+  background: var(--face);
+  border: 2px solid;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 var(--bevel-md), 2px 2px 0 rgba(0,0,0,.35);
+  padding: 3px;
+}
+[data-theme="win98"] .titlebar {
+  display: flex; align-items: center; gap: 6px;
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+  color: #fff; font: 700 12px/1 var(--stack-win);
+  padding: 4px 3px 4px 4px; margin-bottom: 3px;
+}
+[data-theme="win98"] .tb-title { flex: 1; }
+[data-theme="win98"] .tb-buttons { display: flex; gap: 2px; }
+[data-theme="win98"] .tb-buttons b {
+  width: 17px; height: 15px; display: grid; place-items: center;
+  font: 700 10px/1 var(--stack-win); color: #000; background: var(--face);
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="win98"] .statusbar {
+  display: flex; gap: 3px; margin-top: 4px;
+  font: 11px/1 var(--stack-win); color: #000;
+}
+[data-theme="win98"] .statusbar span {
+  padding: 3px 6px;
+  border: 1px solid; border-color: var(--bevel-md) #dfdfdf #dfdfdf var(--bevel-md);
+}
+[data-theme="win98"] .statusbar span:first-child { flex: 1; }
+
+/* --- AQUA window --- */
+[data-theme="aqua"] .shell {
+  background: linear-gradient(180deg, #fdfdfd, #f2f4f7);
+  border: 1px solid #9aa3af; border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(20,40,80,.28), 0 1px 0 #fff inset;
+  overflow: hidden;
+}
+[data-theme="aqua"] .titlebar {
+  display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+  background: linear-gradient(180deg, #f6f7f9 0%, #d9dde3 100%);
+  border-bottom: 1px solid #b3b9c2;
+  font: 700 12px/1 var(--stack-mac); color: #3c4148;
+}
+[data-theme="aqua"] .tb-dots { display: flex; gap: 6px; }
+[data-theme="aqua"] .tb-dots i {
+  width: 11px; height: 11px; border-radius: 50%; display: block;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.9), 0 0 0 1px rgba(0,0,0,.18);
+}
+[data-theme="aqua"] .tb-dots i:nth-child(1) { background: radial-gradient(circle at 35% 30%, #ff9d92, #e0483b); }
+[data-theme="aqua"] .tb-dots i:nth-child(2) { background: radial-gradient(circle at 35% 30%, #ffdd8a, #e0a52c); }
+[data-theme="aqua"] .tb-dots i:nth-child(3) { background: radial-gradient(circle at 35% 30%, #b6f08e, #46a52c); }
+[data-theme="aqua"] .tb-title { flex: 1; text-align: center; }
+[data-theme="aqua"] .tb-buttons { display: none; }
+
+.pane { padding: var(--pane-pad); }
+
+/* Win98 pages were dense. Tighten the vertical rhythm to match —
+   the airy spacing that makes the retro theme feel designed makes
+   this one feel wrong. */
+[data-theme="win98"] .topbar { margin-bottom: 12px; }
+[data-theme="win98"] .portrait { width: clamp(84px, 20vw, 104px); margin-bottom: .7rem; }
+[data-theme="win98"] .tagline { margin-top: .6rem; }
+[data-theme="win98"] .rule { margin: 14px 0; }
+[data-theme="win98"] footer { margin-top: 14px; }
+
+/* GeoCities: content sat in a centred white <table> floating on the
+   tiled wallpaper. This is that table. */
+[data-theme="geo"] .pane {
+  background: #fff; border: 3px ridge #cfc7ee; padding: 16px 14px;
+  box-shadow: 4px 4px 0 rgba(26,26,78,.18);
+}
+
+/* Aqua: white sheet, striped title bar, and a gloss highlight on the
+   top half of every control — the defining move of the era. */
+[data-theme="aqua"] .pane { background: #fff; }
+[data-theme="aqua"] .titlebar {
+  background-image:
+    repeating-linear-gradient(180deg, rgba(255,255,255,.5) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, #f6f7f9 0%, #d5dae1 100%);
+}
+[data-theme="aqua"] .link::after {
+  content: ""; position: absolute; inset: 0 0 52% 0; pointer-events: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+}
+[data-theme="aqua"] .link:hover::after { inset: 0 0 55% 0; background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)); }
+[data-theme="aqua"] .link > * { position: relative; z-index: 1; }
+
+/* ============================================================
+   4. TOP BAR + THEME SWITCH
+   ============================================================ */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: clamp(1.25rem, 5vw, 2.5rem);
+}
+.mark {
+  font-family: var(--font-display); font-weight: var(--display-weight);
+  font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+[data-theme="geo"] .mark { letter-spacing: 0; text-transform: none; color: var(--accent-2); }
+
+.switch { display: inline-flex; padding: 3px; gap: 2px; flex-wrap: wrap;
+  border: var(--border-w) solid var(--border); border-radius: 999px; background: var(--card); }
+.switch button {
+  font: inherit; font-size: .7rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; cursor: pointer; padding: .38rem .62rem;
+  border: 0; border-radius: 999px; background: transparent; color: var(--ink-soft);
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+[data-theme="win98"] .switch { border-radius: 0; background: var(--face); border: 0; padding: 0; gap: 3px; }
+[data-theme="win98"] .switch button {
+  border-radius: 0; background: var(--face); color: #000; text-transform: none; letter-spacing: 0;
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="win98"] .switch button[aria-pressed="true"] {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 #dfdfdf;
+  background: repeating-conic-gradient(#c0c0c0 0 25%, #dfdfdf 0 50%) 0 0/2px 2px;
+}
+[data-theme="geo"] .switch { border-radius: 0; border: 2px ridge #c9c2e8; background: #fff; }
+[data-theme="geo"] .switch button { border-radius: 0; font-family: var(--stack-win); font-size: .68rem; }
+[data-theme="geo"] .switch button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+[data-theme="aqua"] .switch {
+  background: linear-gradient(180deg, #fff, #e6eaf0); border-color: #b0b7c1;
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.08);
+}
+[data-theme="aqua"] .switch button[aria-pressed="true"] {
+  background: linear-gradient(180deg, #7fb8ee 0%, #2d7bd4 55%, #1f66b8 100%);
+  color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 2px rgba(0,0,0,.2);
+}
+
+/* ============================================================
+   5. GEOCITIES FURNITURE
+   ============================================================ */
+[data-theme="geo"] .construction {
+  display: block; margin: 0 0 1rem; padding: .45rem 0; text-align: center;
+  font: 700 .72rem/1 var(--stack-win); letter-spacing: .12em; color: #3a2a00;
+  background: repeating-linear-gradient(45deg, #ffd91c 0 12px, #1a1a1a 12px 24px);
+  -webkit-text-stroke: 0;
+  border-top: 2px solid #000; border-bottom: 2px solid #000;
+}
+[data-theme="geo"] .construction span {
+  background: #ffd91c; padding: .3rem .7rem; border: 1px solid #000;
+}
+[data-theme="geo"] .ticker {
+  display: block; overflow: hidden; margin-bottom: 1.25rem; padding: .3rem 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: #fff;
+}
+[data-theme="geo"] .ticker span {
+  display: inline-block; white-space: nowrap; padding-left: 100%;
+  font: .78rem var(--stack-times); color: var(--accent-2);
+  animation: slide 20s linear infinite;
+}
+@keyframes slide { to { transform: translateX(-100%); } }
+
+[data-theme="geo"] .counter {
+  display: block; text-align: center; margin: 1.5rem 0 0;
+  font: .74rem var(--stack-win); color: var(--ink-soft);
+}
+[data-theme="geo"] .counter b {
+  display: inline-block; margin-left: .4rem; padding: .18rem .4rem;
+  font: 700 .95rem/1 "Courier New", monospace; letter-spacing: .18em;
+  color: #4dff4d; background: #000; border: 2px inset #999;
+}
+[data-theme="geo"] .netscape { display: block; margin-top: .5rem; font-size: .7rem; }
+[data-theme="geo"] .blink { animation: blink 1.2s steps(1) infinite; color: var(--accent-2); font-weight: 700; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ============================================================
+   6. HERO
+   ============================================================ */
+.hero { text-align: center; }
+
+.portrait {
+  width: clamp(112px, 30vw, 148px); aspect-ratio: 1; margin: 0 auto 1.25rem;
+  display: grid; place-items: center; overflow: hidden;
+  border: var(--border-w) solid var(--border); border-radius: 50%;
+  background: var(--card); box-shadow: var(--shadow);
+}
+[data-theme="win98"] .portrait {
+  border-radius: 0; border: 2px solid;
+  border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #dfdfdf;
+}
+[data-theme="geo"] .portrait { border-radius: 0; border: 4px ridge #c9c2e8; }
+[data-theme="aqua"] .portrait {
+  border-radius: 18px; border: 1px solid #b7bec8;
+  box-shadow: 0 4px 12px rgba(20,40,80,.2), inset 0 1px 0 #fff;
+}
+.portrait img, .portrait svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.eyebrow {
+  margin: 0 0 .5rem; font-size: .7rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--ink-soft); font-weight: 700;
+}
+[data-theme="geo"] .eyebrow { font-family: var(--stack-win); letter-spacing: .06em; }
+[data-theme="win98"] .eyebrow { letter-spacing: .04em; text-transform: none; font-size: .74rem; }
+
+h1.name {
+  margin: 0; line-height: 1.08; max-width: 100%; overflow-wrap: break-word;
+  font-family: var(--font-display); font-weight: var(--display-weight);
+  letter-spacing: var(--display-spacing); font-size: var(--display-size);
+  text-transform: var(--display-transform);
+}
+/* The GeoCities rainbow-gradient headline, which in 1999 would have
+   been a WordArt JPEG with visible compression artifacts. */
+[data-theme="geo"] h1.name {
+  background: linear-gradient(90deg, #ff2d2d, #ff8a00, #ffd400, #2fbf4f, #1f7ae0, #8a2be2);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(1.5px 1.5px 0 rgba(0,0,0,.35));
+}
+[data-theme="aqua"] h1.name { color: #24303f; text-shadow: 0 1px 0 #fff; }
+
+/* --- the redaction, one per era --- */
+.redacted {
+  display: inline-block; font-size: .78em; letter-spacing: -.06em; line-height: 1.25;
+  padding: .04em .3em; color: transparent; -webkit-text-fill-color: transparent;
+  background: var(--ink); border-radius: 4px; transform: rotate(-1.1deg); user-select: none;
+}
+/* Win98: a disabled password field, greyed out and un-clickable. */
+[data-theme="win98"] .redacted {
+  transform: none; border-radius: 0; font-size: 1em; letter-spacing: .1em;
+  color: #000; -webkit-text-fill-color: #000; background: #fff;
+  padding: .1em .4em;
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #dfdfdf;
+}
+/* GeoCities: a black bar with blinking question marks, obviously. */
+[data-theme="geo"] .redacted {
+  transform: rotate(-.6deg); border-radius: 0; background: #000;
+  color: #ffd400; -webkit-text-fill-color: #ffd400;
+  font-family: var(--stack-comic); letter-spacing: .1em;
+  border: 2px outset #666; animation: blink 1.6s steps(1) infinite;
+}
+/* Aqua: frosted glass, the one genuinely modern-feeling trick of 2001. */
+[data-theme="aqua"] .redacted {
+  transform: none; border-radius: 6px; background: rgba(120,140,170,.22);
+  color: #24303f; -webkit-text-fill-color: #24303f;
+  filter: blur(6px); padding: .04em .35em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+.tagline { margin: 1rem auto 0; max-width: 26rem; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
+[data-theme="win98"] .tagline, [data-theme="aqua"] .tagline { font-size: .86rem; }
+[data-theme="geo"] .tagline { font-size: 1.02rem; color: var(--ink); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.1rem;
+  padding: .38rem .8rem; font-size: .68rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  border: var(--border-w) solid var(--border); border-radius: 999px;
+  background: var(--card); color: var(--ink-soft);
+}
+/* A bare `hidden` attribute loses to any `display` we set, so restate it. */
+.badge[hidden] { display: none; }
+[data-theme="win98"] .badge {
+  border-radius: 0; font-family: var(--stack-win); text-transform: none; letter-spacing: 0;
+  font-size: .74rem; background: #ffffe1; border: 1px solid #000; color: #000;
+}
+[data-theme="geo"] .badge {
+  border-radius: 0; border: 2px ridge #c9c2e8; background: #ffffcc;
+  font-family: var(--stack-win); color: var(--accent-2);
+}
+[data-theme="aqua"] .badge {
+  border-radius: 999px; background: linear-gradient(180deg, #fff, #e9edf3);
+  box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.1); text-transform: none; letter-spacing: .02em;
+}
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1) } 50% { opacity: .35; transform: scale(.8) } }
+
+/* --- divider --- */
+.rule { margin: clamp(1.5rem, 5vw, 2.5rem) 0; height: 1px; border: 0; }
+[data-theme="retro"] .rule { background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 16px); opacity: .35; }
+[data-theme="win98"] .rule { height: 2px; background: none; border-top: 1px solid var(--bevel-md); border-bottom: 1px solid #dfdfdf; }
+[data-theme="geo"] .rule {
+  height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, #ff2d2d, #ff8a00, #ffd400, #2fbf4f, #1f7ae0, #8a2be2, #ff2d2d);
+}
+[data-theme="aqua"] .rule { background: linear-gradient(90deg, transparent, #b9c2ce 20%, #b9c2ce 80%, transparent); }
+
+/* ============================================================
+   7. LINK CARDS
+   ============================================================ */
+.links { display: flex; flex-direction: column; gap: var(--gap); }
+
+.link {
+  position: relative; display: flex; align-items: center; gap: .9rem;
+  padding: .85rem 1rem;
+  border: var(--border-w) solid var(--border); border-radius: var(--radius);
+  background: var(--card); box-shadow: var(--shadow);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), background-color .15s var(--ease);
+}
+.link:hover, .link:focus-visible { transform: translate(-2px, -2px); box-shadow: var(--shadow-hover); outline: none; }
+.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.link:active { transform: none; box-shadow: var(--shadow); }
+
+/* Win98: a raised button that physically presses in on click. */
+[data-theme="win98"] .link {
+  background: var(--face); border: 2px solid;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 var(--bevel-md);
+  padding: .6rem .7rem;
+}
+[data-theme="win98"] .link:hover { transform: none; }
+[data-theme="win98"] .link:active {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 #dfdfdf;
+  padding: .65rem .65rem .55rem .75rem;
+}
+
+/* GeoCities: a table row. Blue underlined text, highlight on hover. */
+[data-theme="geo"] .link {
+  border: 2px ridge #c9c2e8; padding: .55rem .7rem; box-shadow: none;
+}
+[data-theme="geo"] .link:hover { transform: none; background: #ffffcc; }
+[data-theme="geo"] .link .label { color: var(--accent); text-decoration: underline; }
+
+/* Aqua: white row, gel-blue selection on hover. */
+[data-theme="aqua"] .link {
+  background: linear-gradient(180deg, #fff, #f7f9fb);
+  box-shadow: 0 1px 2px rgba(20,30,50,.1), inset 0 1px 0 #fff;
+}
+[data-theme="aqua"] .link:hover {
+  transform: none;
+  background: linear-gradient(180deg, #6fb2ec 0%, #2d7bd4 60%, #2069bd 100%);
+  color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 2px 6px rgba(20,60,120,.3);
+}
+[data-theme="aqua"] .link:hover .handle, [data-theme="aqua"] .link:hover .chev { color: rgba(255,255,255,.85); opacity: 1; }
+[data-theme="aqua"] .link:hover .icon { background: rgba(255,255,255,.9); }
+
+.link .icon {
+  flex: 0 0 auto; width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: var(--icon-radius); background: var(--icon-bg); color: var(--icon-fg);
+}
+[data-theme="win98"] .link .icon { width: 32px; height: 32px; }
+[data-theme="geo"] .link .icon { width: 26px; height: 26px; }
+[data-theme="aqua"] .link .icon { box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.14); }
+.link .icon svg { width: 18px; height: 18px; fill: currentColor; }
+[data-theme="geo"] .link .icon svg { width: 20px; height: 20px; }
+
+.link .text { display: flex; flex-direction: column; min-width: 0; }
+.link .label { font-weight: 700; font-size: .98rem; letter-spacing: -.01em; }
+[data-theme="win98"] .link .label, [data-theme="aqua"] .link .label { font-size: .88rem; letter-spacing: 0; }
+.link .handle { font-size: .78rem; color: var(--ink-soft); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+[data-theme="geo"] .link .handle { font-family: var(--stack-times); font-size: .82rem; }
+
+.link .chev { margin-left: auto; flex: 0 0 auto; opacity: .45; transition: transform .18s var(--ease), opacity .18s var(--ease); }
+.link:hover .chev { opacity: 1; transform: translateX(3px); }
+.link .chev svg { width: 16px; height: 16px; }
+[data-theme="geo"] .link .chev svg { display: none; }
+[data-theme="geo"] .link .chev::after { content: "NEW!"; font: 700 .62rem var(--stack-win); color: var(--accent-2); }
+
+.link.is-soon { opacity: .55; pointer-events: none; box-shadow: none; }
+.link.is-soon .chev::after { content: "soon"; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.link.is-soon .chev svg { display: none; }
+
+/* ============================================================
+   8. FOOTER
+   ============================================================ */
+footer { margin-top: clamp(1.75rem, 6vw, 2.75rem); text-align: center; font-size: .74rem; color: var(--ink-soft); line-height: 1.7; }
+footer .paw { font-size: .9rem; }
+[data-theme="geo"] footer { font-family: var(--stack-win); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (max-width: 420px) {
+  .topbar { justify-content: center; }
+  .switch button { padding: .35rem .5rem; font-size: .64rem; }
+  .link .handle { font-size: .72rem; }
+}
+</style>
+</head>
+
+<body>
+<div class="layer layer--tile" aria-hidden="true"></div>
+<div class="layer layer--grain" aria-hidden="true"></div>
+
+<div class="shell">
+
+  <div class="titlebar">
+    <span class="tb-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="tb-title" id="tb-title"></span>
+    <span class="tb-buttons" aria-hidden="true"><b>_</b><b>□</b><b>✕</b></span>
+  </div>
+
+  <div class="pane">
+
+    <header class="topbar">
+      <span class="mark" id="mark"></span>
+      <div class="switch" role="group" aria-label="Choose a site theme" id="switch"></div>
+    </header>
+
+    <div class="construction" aria-hidden="true"><span>⚠ UNDER CONSTRUCTION ⚠</span></div>
+    <div class="ticker" aria-hidden="true"><span id="ticker-text"></span></div>
+
+    <main>
+      <section class="hero">
+        <div class="portrait" id="portrait"></div>
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 class="name" id="name"></h1>
+        <p class="tagline" id="tagline"></p>
+        <p><span class="badge" id="badge" hidden><span class="dot"></span><span id="badge-text"></span></span></p>
+      </section>
+
+      <hr class="rule">
+
+      <nav class="links" id="links" aria-label="Official links"></nav>
+    </main>
+
+    <div class="counter">You are visitor number <b id="counter-value"></b></div>
+
+    <footer>
+      <p><span class="paw">🐾</span><br><span id="footer-text"></span></p>
+      <p class="netscape">Best viewed in <span class="blink">Netscape Navigator 4.0</span> at 800×600</p>
+    </footer>
+
+  </div>
+
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span>6 object(s)</span></div>
+
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — everything you'll ever need to edit is in this block.
+   ============================================================ */
+const CONFIG = {
+
+  /* ---- THEME -------------------------------------------------
+     "retro" | "win98" | "geo" | "aqua". This is what visitors land on.
+     The switcher is a comparison tool — once you've picked, set it
+     here and delete the <div class="switch"> from the HTML.        */
+  theme: "retro",
+
+  /* ---- THE NAME ----------------------------------------------
+     IMPORTANT: anything you type in this file is readable by anyone
+     via View Source. Leave `name` empty until reveal day, then fill
+     it in and set revealed: true.                                  */
+  revealed: false,
+  name: "",                       // the reveal — fill this in on launch day
+  maskWidth: 9,                   // how wide the redaction reads, in characters
+
+  mark: "E.M.M.",                 // corner logotype. Initials are a teaser —
+                                  // set to "🐾" if you'd rather give nothing away.
+  eyebrow: "Official links · est. 2026",
+  taglineHidden: "He has a name. You don't know it yet. Everything else is below.",
+  taglineRevealed: "Professional loaf. Occasional menace. All the official accounts live here.",
+  badge: "Name reveal coming soon",
+
+  /* ---- PERIOD DRESSING ---------------------------------------
+     Only rendered by the theme each belongs to. Ignored otherwise. */
+  windowTitle: "Official Links",              // win98 + aqua title bar
+  statusText: "Done",                         // win98 status bar
+  tickerText: "★ Welcome to my homepage! ★ Name reveal coming soon ★ Sign my guestbook! ★ Thanks for visiting! ★ ",
+  visitorCount: "000137",                     // geo hit counter
+
+  /* ---- PORTRAIT ----------------------------------------------
+     Drop a square photo next to index.html and name it here.       */
+  photo: null,
+
+  /* ---- LINKS -------------------------------------------------
+     `soon: true` renders a card greyed out and unclickable.
+     `handle` is printed on the card — set it to "" if a handle
+     would give the name away.                                      */
+  links: [
+    { id: "instagram", label: "Instagram", handle: "@yourhandle",         url: "https://instagram.com/yourhandle" },
+    { id: "tiktok",    label: "TikTok",    handle: "@yourhandle",         url: "https://tiktok.com/@yourhandle" },
+    { id: "youtube",   label: "YouTube",   handle: "@yourchannel",        url: "https://youtube.com/@yourchannel" },
+    { id: "facebook",  label: "Facebook",  handle: "/yourpage",           url: "https://facebook.com/yourpage" },
+    { id: "x",         label: "X",         handle: "@yourhandle",         url: "https://x.com/yourhandle" },
+    { id: "email",     label: "Business",  handle: "hello@yourdomain.com", url: "mailto:hello@yourdomain.com" }
+  ],
+
+  footer: "© 2026 · all naps reserved"
+};
+
+/* The switcher builds itself from this list, so adding a fifth theme
+   is a CSS block plus one line here. */
+const THEMES = [
+  { id: "retro", label: "Retro" },
+  { id: "win98", label: "Win98" },
+  { id: "geo",   label: "GeoCities" },
+  { id: "aqua",  label: "Aqua" }
+];
+
+/* Per-theme window titles and mask characters. Anything that isn't a
+   colour or a font lives here rather than being hard-coded in render(). */
+const THEME_DETAIL = {
+  retro: { mask: "█", title: "" },
+  win98: { mask: "•", title: (t) => t + " — Microsoft Internet Explorer" },
+  geo:   { mask: "?", title: "" },
+  aqua:  { mask: "█", title: (t) => t.toLowerCase().replace(/ /g, "-") + ".html" }
+};
+
+/* ============================================================
+   ICONS — SVG path data, keyed by the link `id` above.
+   ============================================================ */
+const ICONS = {
+  instagram: "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077",
+
+  facebook: "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z",
+
+  tiktok: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+
+  youtube: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z",
+
+  x: "M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z",
+
+  email: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+};
+
+const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+const CAT_PLACEHOLDER = `
+<svg viewBox="0 0 100 100" role="img" aria-label="Illustrated cat portrait placeholder">
+  <rect width="100" height="100" fill="var(--accent)" opacity=".14"/>
+  <path d="M22 44 L26 20 L44 33 A44 44 0 0 1 56 33 L74 20 L78 44 Z" fill="currentColor"/>
+  <circle cx="50" cy="60" r="27" fill="currentColor"/>
+  <circle cx="40" cy="56" r="4.2" fill="var(--card)"/>
+  <circle cx="60" cy="56" r="4.2" fill="var(--card)"/>
+  <path d="M50 66 l-4 3.5 4 3 4-3z" fill="var(--card)"/>
+  <path d="M24 60 h-9 M24 66 h-9 M76 60 h9 M76 66 h9"
+        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+</svg>`;
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll("[data-theme-btn]").forEach((btn) => {
+    btn.setAttribute("aria-pressed", String(btn.dataset.themeBtn === theme));
+  });
+
+  const detail = THEME_DETAIL[theme] || {};
+  const title = typeof detail.title === "function" ? detail.title(CONFIG.windowTitle) : CONFIG.windowTitle;
+  $("tb-title").textContent = title;
+
+  // The mask character is period-specific, so re-draw the name on switch.
+  renderName();
+
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta && bg) meta.content = bg;
+}
+
+function renderName() {
+  const el = $("name");
+  if (CONFIG.revealed && CONFIG.name) {
+    el.textContent = CONFIG.name;
+    el.removeAttribute("aria-label");
+    return;
+  }
+  // The real name is never written into the DOM while hidden — the bar is
+  // filler characters, so View Source gives nothing away.
+  const theme = document.documentElement.dataset.theme;
+  const char = (THEME_DETAIL[theme] && THEME_DETAIL[theme].mask) || "█";
+  el.innerHTML = `<span class="redacted">${char.repeat(CONFIG.maskWidth)}</span>`;
+  el.setAttribute("aria-label", "Name not yet revealed");
+}
+
+function renderLink(item) {
+  const icon = ICONS[item.id]
+    ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[item.id]}"/></svg>`
+    : "";
+  const el = document.createElement("a");
+  el.className = "link" + (item.soon ? " is-soon" : "");
+  el.href = item.soon ? "#" : item.url;
+  if (!item.soon && !item.url.startsWith("mailto:")) {
+    el.target = "_blank";
+    el.rel = "noopener noreferrer";
+  }
+  el.innerHTML = `
+    <span class="icon">${icon}</span>
+    <span class="text">
+      <span class="label">${item.label}</span>
+      ${item.handle ? `<span class="handle">${item.handle}</span>` : ""}
+    </span>
+    <span class="chev">${CHEVRON}</span>`;
+  return el;
+}
+
+function render() {
+  const sw = $("switch");
+  THEMES.forEach((t) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.themeBtn = t.id;
+    b.textContent = t.label;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => applyTheme(t.id));
+    sw.appendChild(b);
+  });
+
+  $("portrait").innerHTML = CONFIG.photo
+    ? `<img src="${CONFIG.photo}" alt="Portrait of the cat">`
+    : CAT_PLACEHOLDER;
+
+  $("mark").textContent = CONFIG.mark;
+  $("eyebrow").textContent = CONFIG.eyebrow;
+  $("tagline").textContent = CONFIG.revealed ? CONFIG.taglineRevealed : CONFIG.taglineHidden;
+  $("ticker-text").textContent = CONFIG.tickerText;
+  $("counter-value").textContent = CONFIG.visitorCount;
+  $("status-text").textContent = CONFIG.statusText;
+  $("footer-text").textContent = CONFIG.footer;
+
+  if (CONFIG.badge && !CONFIG.revealed) {
+    $("badge").hidden = false;
+    $("badge-text").textContent = CONFIG.badge;
+  }
+
+  const frag = document.createDocumentFragment();
+  CONFIG.links.forEach((item) => frag.appendChild(renderLink(item)));
+  $("links").appendChild(frag);
+
+  applyTheme(CONFIG.theme);
+}
+
+render();
+</script>
+</body>
+</html>

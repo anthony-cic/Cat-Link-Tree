@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en" data-theme="win98">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- NOTE: everything in this <head> is public the moment the site is live —
+     it shows up in search results and link previews. It deliberately does NOT
+     contain the name. On reveal day, swap the strings below. -->
+<title>🐾 Official Links</title>
+<meta name="description" content="Every official account, in one place. Name reveal pending.">
+<meta name="theme-color" content="#3a6ea5">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="🐾 Official Links">
+<meta property="og:description" content="Every official account, in one place. Name reveal pending.">
+<!-- PHOTO SLOT 4 — the link-preview thumbnail. Needs a full https:// URL, so
+     fill this in after the site is deployed:
+<meta property="og:image" content="https://you.github.io/repo/photos/preview.jpg"> -->
+<meta name="twitter:card" content="summary">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+
+   Five themes. Each redefines the SAME variable names, so the
+   layout below is written once and never duplicated.
+
+     retro    — warm paper, editorial (the odd one out)
+     win98    — Windows 98, an Internet Explorer window
+     desktop  — a Windows 95/98 desktop: wallpaper, icons, taskbar
+     xp       — Windows XP "Luna"
+     win31    — Windows 3.1 Program Manager
+   ============================================================ */
+
+:root {
+  --maxw: 33rem;
+  --gap: .75rem;
+  --ease: cubic-bezier(.2, .8, .3, 1);
+
+  /* Period type stacks. Nothing to download — these have shipped with
+     Windows for decades, which is exactly why they read as period-correct. */
+  --stack-win: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --stack-xp: "Trebuchet MS", Tahoma, Verdana, sans-serif;
+
+  /* The Windows bevel, as three colours. Every raised or sunken edge in
+     the four OS themes is built from these. */
+  --bevel-lt: #fff;  --bevel-hi: #dfdfdf;  --bevel-md: #808080;  --bevel-dk: #000;
+}
+
+/* ---------- RETRO ---------- */
+[data-theme="retro"] {
+  --bg: #efe4d2;  --ink: #221d19;  --ink-soft: #6b5f52;
+  --accent: #c2432a;  --card: #fffaf0;  --border: #221d19;
+  --border-w: 2px;  --radius: 14px;
+  --shadow: 5px 5px 0 var(--border);  --shadow-hover: 8px 8px 0 var(--border);
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --display-weight: 900;  --display-size: clamp(2.1rem, 9vw, 3.4rem);  --display-spacing: -.02em;
+  --icon-bg: var(--ink);  --icon-fg: var(--card);  --icon-radius: 50%;
+  --pane-pad: 0;
+  color-scheme: light;
+}
+
+/* ---------- WIN98 ---------- */
+[data-theme="win98"] {
+  --bg: #3a6ea5;  --ink: #000;  --ink-soft: #3f3f3f;
+  --accent: #000080;  --card: #fff;  --face: #c0c0c0;
+  --border: #808080;  --border-w: 1px;  --radius: 0;
+  --shadow: none;  --shadow-hover: none;
+  --font-display: var(--stack-win);  --font-body: var(--stack-win);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.3rem, 5.5vw, 1.85rem);  --display-spacing: 0;
+  --icon-bg: #000080;  --icon-fg: #fff;  --icon-radius: 0;
+  --pane-pad: 14px;  --gap: 4px;  --maxw: 30rem;
+  color-scheme: light;
+}
+
+/* ---------- DESKTOP (Win95/98 shell) ---------- */
+[data-theme="desktop"] {
+  --bg: #008080;              /* the teal every 90s PC booted into */
+  --ink: #000;  --ink-soft: #3f3f3f;
+  --accent: #000080;  --card: #fff;  --face: #c0c0c0;
+  --border: #808080;  --border-w: 1px;  --radius: 0;
+  --shadow: none;  --shadow-hover: none;
+  --font-display: var(--stack-win);  --font-body: var(--stack-win);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.3rem, 5.5vw, 1.85rem);  --display-spacing: 0;
+  --icon-bg: #000080;  --icon-fg: #fff;  --icon-radius: 0;
+  --pane-pad: 0;  --gap: 4px;  --maxw: 31rem;
+  color-scheme: light;
+}
+
+/* ---------- XP (Luna) ---------- */
+[data-theme="xp"] {
+  --bg: #5a8f3d;  --ink: #101828;  --ink-soft: #4a5568;
+  --accent: #1f5fbf;  --card: #fff;  --face: #ece9d8;
+  --border: #b6b3a5;  --border-w: 1px;  --radius: 3px;
+  --shadow: 0 1px 2px rgba(0,0,0,.12);  --shadow-hover: 0 2px 6px rgba(0,0,0,.18);
+  --font-display: var(--stack-xp);  --font-body: var(--stack-win);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.4rem, 6vw, 2rem);  --display-spacing: -.01em;
+  --icon-bg: #1f5fbf;  --icon-fg: #fff;  --icon-radius: 4px;
+  --pane-pad: 16px;  --gap: 6px;  --maxw: 31rem;
+  color-scheme: light;
+}
+
+/* ---------- WIN31 (Program Manager) ---------- */
+[data-theme="win31"] {
+  --bg: #7f7f7f;  --ink: #000;  --ink-soft: #404040;
+  --accent: #000080;  --card: #fff;  --face: #c0c0c0;
+  --border: #000;  --border-w: 1px;  --radius: 0;
+  --shadow: none;  --shadow-hover: none;
+  --font-display: var(--stack-win);  --font-body: var(--stack-win);
+  --font-mono: "Courier New", monospace;
+  --display-weight: 700;  --display-size: clamp(1.2rem, 5vw, 1.6rem);  --display-spacing: 0;
+  --icon-bg: #000080;  --icon-fg: #fff;  --icon-radius: 0;
+  --pane-pad: 12px;  --gap: 4px;  --maxw: 30rem;
+  color-scheme: light;
+}
+
+/* ============================================================
+   2. BASE — written once, against the variables above
+   ============================================================ */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0; font-family: var(--font-body); color: var(--ink); background: var(--bg);
+  display: flex; flex-direction: column; align-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem) 1.25rem 3rem;
+  transition: background-color .3s var(--ease), color .3s var(--ease);
+  overflow-x: hidden;
+}
+[data-theme="retro"] body { -webkit-font-smoothing: antialiased; }
+/* Themes with a taskbar need room for it. */
+[data-theme="desktop"] body, [data-theme="xp"] body { padding-bottom: 4.5rem; }
+
+a { color: inherit; text-decoration: none; }
+
+.layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0; }
+[data-theme="retro"] .layer--grain {
+  opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
+}
+/* PHOTO SLOT 3 — the desktop wallpaper. Set CONFIG.wallpaper and it lands
+   here; if the file is missing the flat colour below just shows through. */
+[data-theme="desktop"] .layer--wall, [data-theme="xp"] .layer--wall {
+  opacity: 1; background-size: cover; background-position: center;
+}
+[data-theme="xp"] .layer--wall {
+  background-image:
+    radial-gradient(150% 55% at 50% 118%, #8ac95a 0 58%, #5f9c3a 58%, transparent 59%),
+    linear-gradient(180deg, #2f74cc 0%, #6fb0ee 55%, #a8d4f5 100%);
+}
+/* Windows 3.1's desktop was a two-colour dither, not a flat fill. */
+[data-theme="win31"] .layer--wall {
+  opacity: 1;
+  background-image: repeating-conic-gradient(#7c7c7c 0 25%, #6b6b6b 0 50%);
+  background-size: 4px 4px;
+}
+
+.shell { position: relative; z-index: 1; width: 100%; max-width: var(--maxw); }
+
+/* ============================================================
+   3. WINDOW CHROME
+   Title bar, menu bar, status bar, taskbar. All present in the DOM
+   for every theme, all display:none until a theme opts in.
+   ============================================================ */
+.titlebar, .menubar, .statusbar, .taskbar { display: none; }
+
+/* --- the window box ---
+   Note "desktop" is absent here on purpose: that theme has no window
+   at all. The page IS the desktop — icons on the wallpaper, taskbar
+   along the bottom — which is what makes it read differently from
+   win98 rather than being win98 with a different icon layout. */
+[data-theme="win98"] .shell {
+  background: var(--face); padding: 3px;
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md), 2px 2px 0 rgba(0,0,0,.35);
+}
+[data-theme="win31"] .shell {
+  background: var(--face); padding: 2px;
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  outline: 1px solid #000;
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="xp"] .shell {
+  background: var(--face); padding: 0 3px 3px;
+  border: 1px solid #0731a0; border-radius: 8px 8px 0 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+/* --- title bars --- */
+[data-theme="win98"] .titlebar {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 2px;
+  padding: 4px 3px 4px 5px; color: #fff; font: 700 12px/1 var(--stack-win);
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+}
+[data-theme="win31"] .titlebar {
+  display: flex; align-items: center; gap: 6px; margin-bottom: 2px;
+  padding: 3px 4px; color: #fff; font: 700 12px/1 var(--stack-win);
+  background: #000080; border-bottom: 1px solid var(--bevel-md);
+}
+[data-theme="win31"] .tb-title { flex: 1; text-align: center; }
+[data-theme="win31"] .titlebar::before {
+  content: "▬"; width: 17px; height: 15px; display: grid; place-items: center;
+  font-size: 8px; color: #000; background: var(--face);
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="xp"] .titlebar {
+  display: flex; align-items: center; gap: 8px; padding: 5px 6px 5px 8px;
+  color: #fff; font: 700 13px/1 var(--stack-xp);
+  text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+  background: linear-gradient(180deg, #0058e6 0%, #3f8cf3 8%, #0a5ad4 42%, #0846b8 92%, #2a6fe0 100%);
+  border-radius: 7px 7px 0 0;
+}
+.tb-title { flex: 1; }
+.tb-buttons { display: flex; gap: 2px; }
+[data-theme="win98"] .tb-buttons b, [data-theme="win31"] .tb-buttons b {
+  width: 17px; height: 15px; display: grid; place-items: center;
+  font: 700 10px/1 var(--stack-win); color: #000; background: var(--face);
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="xp"] .tb-buttons b {
+  width: 20px; height: 19px; display: grid; place-items: center; color: #fff;
+  font: 700 11px/1 var(--stack-xp); border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.6);
+  background: linear-gradient(180deg, #4d90f0, #175dd0);
+}
+[data-theme="xp"] .tb-buttons b:last-child { background: linear-gradient(180deg, #f08a70, #d33a1a); }
+
+/* --- menu bar --- */
+[data-theme="win98"] .menubar, [data-theme="win31"] .menubar, [data-theme="xp"] .menubar {
+  display: flex; gap: 14px; padding: 3px 6px; margin-bottom: 2px;
+  font: 12px/1 var(--stack-win); color: #000; background: var(--face);
+}
+[data-theme="win31"] .menubar { border-bottom: 1px solid var(--bevel-md); box-shadow: 0 1px 0 var(--bevel-lt); }
+[data-theme="xp"] .menubar { background: #fff; border-bottom: 1px solid #d9d5c3; }
+.menubar u { text-decoration: underline; }
+
+/* --- status bar --- */
+[data-theme="win98"] .statusbar {
+  display: flex; gap: 3px; margin-top: 4px; font: 11px/1 var(--stack-win); color: #000;
+}
+[data-theme="win98"] .statusbar span {
+  padding: 3px 6px; border: 1px solid;
+  border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
+}
+[data-theme="win98"] .statusbar span:first-child { flex: 1; }
+
+/* --- taskbar (fixed to the viewport, like the real thing) --- */
+[data-theme="desktop"] .taskbar, [data-theme="xp"] .taskbar {
+  display: flex; align-items: center; gap: 6px;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  height: 30px; padding: 2px 4px; font: 11px/1 var(--stack-win);
+}
+[data-theme="desktop"] .taskbar {
+  background: var(--face);
+  border-top: 2px solid; border-color: var(--bevel-lt) transparent transparent;
+  box-shadow: inset 0 1px 0 var(--bevel-hi);
+}
+[data-theme="xp"] .taskbar {
+  height: 34px; color: #fff; font-family: var(--stack-xp);
+  background: linear-gradient(180deg, #3b78d8 0%, #245edb 9%, #3f8ce8 18%, #2158d4 92%, #1941a5 100%);
+  border-top: 1px solid #093ba3;
+}
+.tb-start {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px 3px 5px; font-weight: 700;
+}
+[data-theme="desktop"] .tb-start {
+  background: var(--face); border: 1px solid;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="xp"] .tb-start {
+  color: #fff; font-style: italic; font-size: 13px; padding: 4px 16px 4px 10px;
+  border-radius: 0 8px 8px 0;
+  background: linear-gradient(180deg, #5eac56 0%, #3f9e35 40%, #2f8a26 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+}
+.tb-flag { width: 13px; height: 11px; display: block; }
+.tb-tasks { flex: 1; }
+.tb-clock { padding: 3px 8px; }
+[data-theme="desktop"] .tb-clock {
+  border: 1px solid; border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
+}
+[data-theme="xp"] .tb-clock { background: linear-gradient(180deg, #1c8ad4, #12a0e0); border-radius: 3px; }
+
+.pane { padding: var(--pane-pad); }
+[data-theme="xp"] .pane { background: #fff; border: 1px solid #b6b3a5; }
+
+/* The OS themes are dense — the airy rhythm that makes retro feel
+   designed makes these feel wrong. */
+[data-theme="win98"] .topbar, [data-theme="desktop"] .topbar,
+[data-theme="win31"] .topbar, [data-theme="xp"] .topbar { margin-bottom: 12px; }
+[data-theme="win98"] .portrait, [data-theme="desktop"] .portrait,
+[data-theme="win31"] .portrait, [data-theme="xp"] .portrait {
+  width: clamp(84px, 20vw, 104px); margin-bottom: .7rem;
+}
+[data-theme="win98"] .tagline, [data-theme="desktop"] .tagline,
+[data-theme="win31"] .tagline, [data-theme="xp"] .tagline { margin-top: .6rem; }
+[data-theme="win98"] .rule, [data-theme="desktop"] .rule,
+[data-theme="win31"] .rule, [data-theme="xp"] .rule { margin: 14px 0; }
+
+/* ============================================================
+   4. TOP BAR + THEME SWITCH
+   ============================================================ */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap; margin-bottom: clamp(1.25rem, 5vw, 2.5rem);
+}
+.mark {
+  font-family: var(--font-display); font-weight: var(--display-weight);
+  font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft);
+}
+[data-theme="desktop"] .mark { color: #fff; text-shadow: 1px 1px 0 #000; }
+
+.switch {
+  display: inline-flex; padding: 3px; gap: 2px; flex-wrap: wrap;
+  border: var(--border-w) solid var(--border); border-radius: 999px; background: var(--card);
+}
+.switch button {
+  font: inherit; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  cursor: pointer; padding: .38rem .62rem; border: 0; border-radius: 999px;
+  background: transparent; color: var(--ink-soft);
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+[data-theme="win98"] .switch, [data-theme="desktop"] .switch, [data-theme="win31"] .switch {
+  border-radius: 0; background: transparent; border: 0; padding: 0; gap: 3px;
+}
+[data-theme="win98"] .switch button, [data-theme="desktop"] .switch button, [data-theme="win31"] .switch button {
+  border-radius: 0; background: var(--face); color: #000; text-transform: none; letter-spacing: 0;
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="win98"] .switch button[aria-pressed="true"],
+[data-theme="desktop"] .switch button[aria-pressed="true"],
+[data-theme="win31"] .switch button[aria-pressed="true"] {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 var(--bevel-hi);
+  background: repeating-conic-gradient(#c0c0c0 0 25%, #dfdfdf 0 50%) 0 0/2px 2px;
+}
+[data-theme="xp"] .switch { border-radius: 4px; border-color: #b6b3a5; background: #f6f5ee; }
+[data-theme="xp"] .switch button { border-radius: 3px; text-transform: none; letter-spacing: 0; }
+[data-theme="xp"] .switch button[aria-pressed="true"] {
+  background: linear-gradient(180deg, #4d90f0, #1f5fbf); color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero { text-align: center; }
+
+/* PHOTO SLOT 1 — the portrait. CONFIG.photo. */
+.portrait {
+  width: clamp(112px, 30vw, 148px); aspect-ratio: 1; margin: 0 auto 1.25rem;
+  display: grid; place-items: center; overflow: hidden;
+  border: var(--border-w) solid var(--border); border-radius: 50%;
+  background: var(--card); box-shadow: var(--shadow);
+}
+[data-theme="win98"] .portrait, [data-theme="desktop"] .portrait, [data-theme="win31"] .portrait {
+  border-radius: 0; border: 2px solid;
+  border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+[data-theme="xp"] .portrait { border-radius: 4px; border: 1px solid #7f9db9; }
+.portrait img, .portrait svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.eyebrow { margin: 0 0 .5rem; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); font-weight: 700; }
+[data-theme="win98"] .eyebrow, [data-theme="desktop"] .eyebrow,
+[data-theme="win31"] .eyebrow, [data-theme="xp"] .eyebrow { letter-spacing: .04em; text-transform: none; font-size: .74rem; }
+[data-theme="desktop"] .eyebrow { color: #dfe8f5; }
+
+h1.name {
+  margin: 0; line-height: 1.08; max-width: 100%; overflow-wrap: break-word;
+  font-family: var(--font-display); font-weight: var(--display-weight);
+  letter-spacing: var(--display-spacing); font-size: var(--display-size);
+}
+[data-theme="desktop"] h1.name { color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,.55); }
+
+/* --- the redaction --- */
+.redacted {
+  display: inline-block; font-size: .78em; letter-spacing: -.06em; line-height: 1.25;
+  padding: .04em .3em; color: transparent; -webkit-text-fill-color: transparent;
+  background: var(--ink); border-radius: 4px; transform: rotate(-1.1deg); user-select: none;
+}
+/* Win98/95/3.1: a disabled password field. */
+[data-theme="win98"] .redacted, [data-theme="desktop"] .redacted, [data-theme="win31"] .redacted {
+  transform: none; border-radius: 0; font-size: 1em; letter-spacing: .1em;
+  color: #000; -webkit-text-fill-color: #000; background: #fff; padding: .1em .4em;
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+/* XP: the same field, restyled the way XP restyled everything. */
+[data-theme="xp"] .redacted {
+  transform: none; border-radius: 3px; font-size: 1em; letter-spacing: .1em;
+  color: #101828; -webkit-text-fill-color: #101828; background: #fff; padding: .1em .45em;
+  border: 1px solid #7f9db9; box-shadow: inset 1px 1px 2px rgba(0,0,0,.12);
+}
+
+.tagline { margin: 1rem auto 0; max-width: 26rem; font-size: 1rem; line-height: 1.6; color: var(--ink-soft); }
+[data-theme="win98"] .tagline, [data-theme="desktop"] .tagline,
+[data-theme="win31"] .tagline, [data-theme="xp"] .tagline { font-size: .86rem; }
+[data-theme="desktop"] .tagline { color: #eaf1fa; text-shadow: 1px 1px 0 rgba(0,0,0,.5); }
+
+.badge {
+  display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.1rem;
+  padding: .38rem .8rem; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  border: var(--border-w) solid var(--border); border-radius: 999px; background: var(--card); color: var(--ink-soft);
+}
+/* A bare `hidden` attribute loses to any `display` we set, so restate it. */
+.badge[hidden] { display: none; }
+[data-theme="win98"] .badge, [data-theme="desktop"] .badge, [data-theme="win31"] .badge {
+  border-radius: 0; text-transform: none; letter-spacing: 0; font-size: .74rem;
+  background: #ffffe1; border: 1px solid #000; color: #000;
+}
+[data-theme="xp"] .badge {
+  border-radius: 3px; text-transform: none; letter-spacing: 0; font-size: .74rem;
+  background: #fffbd8; border: 1px solid #d4c98a; color: #4a4326;
+}
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1) } 50% { opacity: .35; transform: scale(.8) } }
+
+.rule { margin: clamp(1.5rem, 5vw, 2.5rem) 0; height: 1px; border: 0; }
+[data-theme="retro"] .rule { background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 16px); opacity: .35; }
+[data-theme="win98"] .rule, [data-theme="win31"] .rule {
+  height: 2px; background: none; border-top: 1px solid var(--bevel-md); border-bottom: 1px solid var(--bevel-hi);
+}
+[data-theme="desktop"] .rule {
+  height: 2px; background: none;
+  border-top: 1px solid rgba(0,0,0,.3); border-bottom: 1px solid rgba(255,255,255,.22);
+}
+[data-theme="xp"] .rule { background: linear-gradient(90deg, #d9d5c3, #ece9d8); height: 2px; }
+
+/* ============================================================
+   6. LINK CARDS
+   ============================================================ */
+.links { display: flex; flex-direction: column; gap: var(--gap); }
+
+.link {
+  position: relative; display: flex; align-items: center; gap: .9rem; padding: .85rem 1rem;
+  border: var(--border-w) solid var(--border); border-radius: var(--radius);
+  background: var(--card); box-shadow: var(--shadow);
+  transition: transform .18s var(--ease), box-shadow .18s var(--ease), background-color .15s var(--ease);
+}
+.link:hover, .link:focus-visible { transform: translate(-2px, -2px); box-shadow: var(--shadow-hover); outline: none; }
+.link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.link:active { transform: none; box-shadow: var(--shadow); }
+
+/* Win98 / 3.1: a raised button that physically presses in on click. */
+[data-theme="win98"] .link {
+  background: var(--face); border: 2px solid; padding: .6rem .7rem;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+[data-theme="win98"] .link:hover { transform: none; }
+[data-theme="win98"] .link:active {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 var(--bevel-hi);
+  padding: .65rem .65rem .55rem .75rem;
+}
+
+/* XP: a white list row with the Luna blue hover. */
+[data-theme="xp"] .link { border-color: #d9d5c3; }
+[data-theme="xp"] .link:hover { transform: none; background: #e8f0fe; border-color: #7f9db9; }
+
+/* Desktop + Win3.1: shortcut icons in a grid — desktop shortcuts in one
+   case, a Program Manager group in the other. Same layout, different
+   surface, so the rules are shared and only the label colour differs. */
+[data-theme="desktop"] .links, [data-theme="win31"] .links {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px;
+}
+[data-theme="desktop"] .link, [data-theme="win31"] .link {
+  flex-direction: column; gap: .4rem; text-align: center; padding: 8px 4px;
+  background: transparent; border: 1px dotted transparent; box-shadow: none;
+}
+[data-theme="desktop"] .link:hover, [data-theme="win31"] .link:hover { transform: none; }
+[data-theme="desktop"] .link .handle, [data-theme="desktop"] .link .chev,
+[data-theme="win31"] .link .handle, [data-theme="win31"] .link .chev { display: none; }
+[data-theme="desktop"] .link .label, [data-theme="win31"] .link .label {
+  font-size: .72rem; font-weight: 400; padding: 1px 3px;
+}
+[data-theme="desktop"] .link .label { color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.7); }
+[data-theme="win31"] .link .label { color: #000; }
+[data-theme="desktop"] .link:hover .label, [data-theme="win31"] .link:hover .label {
+  background: #000080; color: #fff; text-shadow: none;
+}
+[data-theme="desktop"] .link:hover { border-color: #fff; }
+[data-theme="win31"] .link:hover { border-color: #000; }
+[data-theme="desktop"] .link .icon, [data-theme="win31"] .link .icon { width: 34px; height: 34px; }
+
+/* The Program Manager group window: a sunken well the icons sit in. */
+[data-theme="win31"] .links {
+  padding: 10px; background: var(--face); border: 2px solid;
+  border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+
+.link .icon {
+  flex: 0 0 auto; width: 38px; height: 38px; display: grid; place-items: center;
+  border-radius: var(--icon-radius); background: var(--icon-bg); color: var(--icon-fg);
+}
+[data-theme="win98"] .link .icon, [data-theme="win31"] .link .icon { width: 32px; height: 32px; }
+.link .icon svg { width: 18px; height: 18px; fill: currentColor; }
+
+.link .text { display: flex; flex-direction: column; min-width: 0; }
+.link .label { font-weight: 700; font-size: .98rem; letter-spacing: -.01em; }
+[data-theme="win98"] .link .label, [data-theme="win31"] .link .label, [data-theme="xp"] .link .label { font-size: .88rem; letter-spacing: 0; }
+.link .handle { font-size: .78rem; color: var(--ink-soft); font-family: var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.link .chev { margin-left: auto; flex: 0 0 auto; opacity: .45; transition: transform .18s var(--ease), opacity .18s var(--ease); }
+.link:hover .chev { opacity: 1; transform: translateX(3px); }
+.link .chev svg { width: 16px; height: 16px; }
+
+.link.is-soon { opacity: .55; pointer-events: none; box-shadow: none; }
+.link.is-soon .chev::after { content: "soon"; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+.link.is-soon .chev svg { display: none; }
+
+/* ============================================================
+   7. PHOTO GALLERY  — PHOTO SLOT 2
+   A tile shows the image if the file exists, and a labelled empty
+   slot if it doesn't. Drop a correctly-named file into photos/ and
+   it appears; no code change, no broken-image icon either way.
+   ============================================================ */
+.gallery { margin-top: clamp(1.5rem, 5vw, 2.25rem); }
+.gallery[hidden] { display: none; }
+
+.gallery-title {
+  margin: 0 0 .6rem; font-size: .74rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+}
+[data-theme="win98"] .gallery-title, [data-theme="desktop"] .gallery-title,
+[data-theme="win31"] .gallery-title, [data-theme="xp"] .gallery-title { letter-spacing: .02em; text-transform: none; font-size: .8rem; }
+[data-theme="desktop"] .gallery-title { color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.6); }
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); }
+@media (max-width: 420px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+
+.tile { margin: 0; }
+.tile .frame {
+  position: relative; aspect-ratio: 1; overflow: hidden;
+  display: grid; place-items: center;
+  background: var(--card); border: var(--border-w) solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile .slot {
+  display: none; padding: .4rem; text-align: center;
+  font: 400 .62rem/1.4 var(--font-mono); color: var(--ink-soft); word-break: break-all;
+}
+.tile.is-empty img { display: none; }
+.tile.is-empty .slot { display: block; }
+.tile.is-empty .frame { background: repeating-linear-gradient(45deg, transparent 0 6px, rgba(128,128,128,.12) 6px 12px), var(--card); }
+.tile figcaption { margin-top: .35rem; font-size: .7rem; color: var(--ink-soft); text-align: center; }
+[data-theme="desktop"] .tile figcaption { color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,.6); }
+
+/* Sunken picture frames for the Windows themes. */
+[data-theme="win98"] .tile .frame, [data-theme="desktop"] .tile .frame, [data-theme="win31"] .tile .frame {
+  border: 2px solid; border-radius: 0;
+  border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+[data-theme="xp"] .tile .frame { border: 1px solid #7f9db9; border-radius: 3px; }
+/* Retro: pin the photos up at a slight angle. */
+[data-theme="retro"] .tile:nth-child(odd) .frame { transform: rotate(-1.2deg); }
+[data-theme="retro"] .tile:nth-child(even) .frame { transform: rotate(1deg); }
+
+/* ============================================================
+   8. FOOTER
+   ============================================================ */
+footer { margin-top: clamp(1.75rem, 6vw, 2.75rem); text-align: center; font-size: .74rem; color: var(--ink-soft); line-height: 1.7; }
+[data-theme="win98"] footer, [data-theme="desktop"] footer,
+[data-theme="win31"] footer, [data-theme="xp"] footer { margin-top: 14px; }
+[data-theme="desktop"] footer { color: #dfe8f5; text-shadow: 1px 1px 0 rgba(0,0,0,.5); }
+footer .paw { font-size: .9rem; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (max-width: 420px) {
+  .topbar { justify-content: center; }
+  .switch button { padding: .35rem .5rem; font-size: .64rem; }
+  .link .handle { font-size: .72rem; }
+}
+</style>
+</head>
+
+<body>
+<div class="layer layer--wall" aria-hidden="true"></div>
+<div class="layer layer--grain" aria-hidden="true"></div>
+
+<div class="shell">
+
+  <div class="titlebar">
+    <span class="tb-title" id="tb-title"></span>
+    <span class="tb-buttons" aria-hidden="true"><b>_</b><b>□</b><b>✕</b></span>
+  </div>
+
+  <div class="menubar" aria-hidden="true">
+    <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>H</u>elp</span>
+  </div>
+
+  <div class="pane">
+
+    <header class="topbar">
+      <span class="mark" id="mark"></span>
+      <div class="switch" role="group" aria-label="Choose a site theme" id="switch"></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="portrait" id="portrait"></div>
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 class="name" id="name"></h1>
+        <p class="tagline" id="tagline"></p>
+        <p><span class="badge" id="badge" hidden><span class="dot"></span><span id="badge-text"></span></span></p>
+      </section>
+
+      <hr class="rule">
+
+      <nav class="links" id="links" aria-label="Official links"></nav>
+
+      <section class="gallery" id="gallery" hidden>
+        <h2 class="gallery-title" id="gallery-title"></h2>
+        <div class="tiles" id="tiles"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p><span class="paw">🐾</span><br><span id="footer-text"></span></p>
+    </footer>
+
+  </div>
+
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span>6 object(s)</span></div>
+
+</div>
+
+<div class="taskbar" aria-hidden="true">
+  <span class="tb-start">
+    <svg class="tb-flag" viewBox="0 0 13 11"><path fill="#f24e4e" d="M0 1.6 5.6 0v4.8H0z"/><path fill="#68c168" d="M6.4 0 13 1.1v3.7H6.4z"/><path fill="#4e8ef2" d="M0 5.6h5.6v4.8L0 9.2z"/><path fill="#f2c14e" d="M6.4 5.6H13v4.3l-6.6 1.1z"/></svg>
+    Start
+  </span>
+  <span class="tb-tasks"></span>
+  <span class="tb-clock" id="clock"></span>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — everything you'll ever need to edit is in this block.
+   ============================================================ */
+const CONFIG = {
+
+  /* ---- THEME -------------------------------------------------
+     "win98" | "desktop" | "xp" | "win31" | "retro"               */
+  theme: "win98",
+
+  /* ---- THE NAME ----------------------------------------------
+     IMPORTANT: anything you type in this file is readable by anyone
+     via View Source. Leave `name` empty until reveal day, then fill
+     it in and set revealed: true.                                 */
+  revealed: false,
+  name: "",                       // the reveal — fill this in on launch day
+  maskWidth: 9,
+
+  mark: "E.M.M.",
+  eyebrow: "Official links · est. 2026",
+  taglineHidden: "She has a name. You don't know it yet. Everything else is below.",
+  taglineRevealed: "Professional loaf. Occasional menace. All her official accounts live here.",
+  badge: "Name reveal coming soon",
+
+  /* ---- PHOTOS ------------------------------------------------
+     Four places a picture of her can go. Put the files in a folder
+     called `photos` next to index.html; the names below are just
+     defaults, change them to whatever you actually name the files.
+
+     Any slot whose file is missing degrades quietly — a drawn cat
+     for the portrait, a labelled empty tile in the gallery, a flat
+     colour for the wallpaper. Nothing shows a broken image.        */
+
+  photo: "photos/portrait.jpg",       // 1. the round/framed portrait up top
+  wallpaper: "photos/wallpaper.jpg",  // 3. desktop background ("desktop" theme)
+
+  galleryTitle: "Photos",
+  gallery: [                          // 2. the gallery grid. Add or remove freely.
+    { src: "photos/photo-1.jpg", caption: "Loafing, 2026" },
+    { src: "photos/photo-2.jpg", caption: "Sunbeam duty" },
+    { src: "photos/photo-3.jpg", caption: "Box inspection" },
+    { src: "photos/photo-4.jpg", caption: "3am zoomies" },
+    { src: "photos/photo-5.jpg", caption: "Judging you" },
+    { src: "photos/photo-6.jpg", caption: "Off duty" }
+  ],
+  /* 4. the link-preview thumbnail is an og:image meta tag in <head> —
+     it needs a full https:// URL, so fill it in after deploying.    */
+
+  /* ---- PERIOD DRESSING --------------------------------------- */
+  windowTitle: "Official Links",
+  statusText: "Done",
+
+  /* ---- LINKS -------------------------------------------------
+     `soon: true` renders a card greyed out and unclickable.
+     `handle` is printed on the card — set it to "" if a handle
+     would give the name away.                                     */
+  links: [
+    { id: "instagram", label: "Instagram", handle: "@yourhandle",         url: "https://instagram.com/yourhandle" },
+    { id: "tiktok",    label: "TikTok",    handle: "@yourhandle",         url: "https://tiktok.com/@yourhandle" },
+    { id: "youtube",   label: "YouTube",   handle: "@yourchannel",        url: "https://youtube.com/@yourchannel" },
+    { id: "facebook",  label: "Facebook",  handle: "/yourpage",           url: "https://facebook.com/yourpage" },
+    { id: "x",         label: "X",         handle: "@yourhandle",         url: "https://x.com/yourhandle" },
+    { id: "email",     label: "Business",  handle: "hello@yourdomain.com", url: "mailto:hello@yourdomain.com" }
+  ],
+
+  footer: "© 2026 · all naps reserved"
+};
+
+/* The switcher builds itself from this list, so adding a sixth theme
+   is a CSS block plus one line. */
+const THEMES = [
+  { id: "win98",   label: "Win98" },
+  { id: "desktop", label: "Desktop" },
+  { id: "xp",      label: "XP" },
+  { id: "win31",   label: "Win3.1" },
+  { id: "retro",   label: "Retro" }
+];
+
+/* Per-theme window titles. Anything that isn't a colour or a font
+   lives here rather than being hard-coded into render(). */
+const THEME_DETAIL = {
+  retro:   { title: "" },
+  win98:   { title: (t) => t + " — Microsoft Internet Explorer" },
+  desktop: { title: (t) => t },
+  xp:      { title: (t) => t + " — Windows Internet Explorer" },
+  win31:   { title: (t) => t.toUpperCase() }
+};
+
+/* ============================================================
+   ICONS — SVG path data, keyed by the link `id` above.
+   ============================================================ */
+const ICONS = {
+  instagram: "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077",
+
+  facebook: "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z",
+
+  tiktok: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+
+  youtube: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z",
+
+  x: "M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z",
+
+  email: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+};
+
+const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+const CAT_PLACEHOLDER = `
+<svg viewBox="0 0 100 100" role="img" aria-label="Illustrated cat portrait placeholder">
+  <rect width="100" height="100" fill="var(--accent)" opacity=".14"/>
+  <path d="M22 44 L26 20 L44 33 A44 44 0 0 1 56 33 L74 20 L78 44 Z" fill="currentColor"/>
+  <circle cx="50" cy="60" r="27" fill="currentColor"/>
+  <circle cx="40" cy="56" r="4.2" fill="var(--card)"/>
+  <circle cx="60" cy="56" r="4.2" fill="var(--card)"/>
+  <path d="M50 66 l-4 3.5 4 3 4-3z" fill="var(--card)"/>
+  <path d="M24 60 h-9 M24 66 h-9 M76 60 h9 M76 66 h9"
+        stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+</svg>`;
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = (id) => document.getElementById(id);
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  document.querySelectorAll("[data-theme-btn]").forEach((btn) => {
+    btn.setAttribute("aria-pressed", String(btn.dataset.themeBtn === theme));
+  });
+
+  const detail = THEME_DETAIL[theme] || {};
+  $("tb-title").textContent =
+    typeof detail.title === "function" ? detail.title(CONFIG.windowTitle) : CONFIG.windowTitle;
+
+  const bg = getComputedStyle(document.documentElement).getPropertyValue("--bg").trim();
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta && bg) meta.content = bg;
+}
+
+function renderName() {
+  const el = $("name");
+  if (CONFIG.revealed && CONFIG.name) {
+    el.textContent = CONFIG.name;
+    el.removeAttribute("aria-label");
+    return;
+  }
+  // The real name is never written into the DOM while hidden — these are
+  // filler characters, so View Source gives nothing away.
+  el.innerHTML = `<span class="redacted">${"•".repeat(CONFIG.maskWidth)}</span>`;
+  el.setAttribute("aria-label", "Name not yet revealed");
+}
+
+/* Photos: try to load, fall back to a labelled empty slot. This is why
+   you can drop files into photos/ later without touching any code. */
+function renderPortrait() {
+  const box = $("portrait");
+  if (!CONFIG.photo) { box.innerHTML = CAT_PLACEHOLDER; return; }
+  const img = new Image();
+  img.alt = "Portrait of the cat";
+  img.addEventListener("error", () => { box.innerHTML = CAT_PLACEHOLDER; });
+  img.addEventListener("load", () => { box.innerHTML = ""; box.appendChild(img); });
+  img.src = CONFIG.photo;
+  box.innerHTML = CAT_PLACEHOLDER;   // shown until (and unless) the photo loads
+}
+
+function renderGallery() {
+  const items = CONFIG.gallery || [];
+  if (!items.length) return;
+  $("gallery").hidden = false;
+  $("gallery-title").textContent = CONFIG.galleryTitle || "Photos";
+
+  const frag = document.createDocumentFragment();
+  items.forEach((item) => {
+    const fig = document.createElement("figure");
+    fig.className = "tile is-empty";          // assume empty until the file loads
+    fig.innerHTML = `
+      <div class="frame">
+        <img alt="${item.caption || "Photo"}">
+        <span class="slot">${item.src}</span>
+      </div>
+      ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ""}`;
+    const img = fig.querySelector("img");
+    img.addEventListener("load", () => fig.classList.remove("is-empty"));
+    img.src = item.src;
+    frag.appendChild(fig);
+  });
+  $("tiles").appendChild(frag);
+}
+
+function renderWallpaper() {
+  if (!CONFIG.wallpaper) return;
+  const probe = new Image();
+  probe.addEventListener("load", () => {
+    document.querySelector(".layer--wall").style.backgroundImage = `url("${CONFIG.wallpaper}")`;
+  });
+  probe.src = CONFIG.wallpaper;   // if it 404s, the flat colour just stays
+}
+
+function renderLink(item) {
+  const icon = ICONS[item.id]
+    ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ICONS[item.id]}"/></svg>`
+    : "";
+  const el = document.createElement("a");
+  el.className = "link" + (item.soon ? " is-soon" : "");
+  el.href = item.soon ? "#" : item.url;
+  if (!item.soon && !item.url.startsWith("mailto:")) {
+    el.target = "_blank";
+    el.rel = "noopener noreferrer";
+  }
+  el.innerHTML = `
+    <span class="icon">${icon}</span>
+    <span class="text">
+      <span class="label">${item.label}</span>
+      ${item.handle ? `<span class="handle">${item.handle}</span>` : ""}
+    </span>
+    <span class="chev">${CHEVRON}</span>`;
+  return el;
+}
+
+function startClock() {
+  const el = $("clock");
+  const tick = () => {
+    el.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  };
+  tick();
+  setInterval(tick, 30000);
+}
+
+function render() {
+  const sw = $("switch");
+  THEMES.forEach((t) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.themeBtn = t.id;
+    b.textContent = t.label;
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", () => applyTheme(t.id));
+    sw.appendChild(b);
+  });
+
+  renderPortrait();
+  renderWallpaper();
+
+  $("mark").textContent = CONFIG.mark;
+  $("eyebrow").textContent = CONFIG.eyebrow;
+  renderName();
+  $("tagline").textContent = CONFIG.revealed ? CONFIG.taglineRevealed : CONFIG.taglineHidden;
+  $("status-text").textContent = CONFIG.statusText;
+  $("footer-text").textContent = CONFIG.footer;
+
+  if (CONFIG.badge && !CONFIG.revealed) {
+    $("badge").hidden = false;
+    $("badge-text").textContent = CONFIG.badge;
+  }
+
+  const frag = document.createDocumentFragment();
+  CONFIG.links.forEach((item) => frag.appendChild(renderLink(item)));
+  $("links").appendChild(frag);
+
+  renderGallery();
+  startClock();
+  applyTheme(CONFIG.theme);
+}
+
+render();
+</script>
+</body>
+</html>

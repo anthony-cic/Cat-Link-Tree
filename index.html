@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- GENERATED FILE — do not edit by hand.
+     Cat Lab → Cat Site → Publish regenerates this from src/catsite/template.html.
+     Everything below the CONFIG block is the template; CONFIG comes from the database. -->
+
+<title>El Meow Meow — official links</title>
+<meta name="description" content="Every official account for El Meow Meow, in one place.">
+<meta name="theme-color" content="#3a6ea5">
+<meta property="og:type" content="website">
+<meta property="og:title" content="El Meow Meow — official links">
+<meta property="og:description" content="Every official account for El Meow Meow, in one place.">
+<!-- og:image: set a full https:// URL in Cat Site settings once the site is deployed -->
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   Windows 98. One theme, so the tokens live in :root and the
+   [data-theme] indirection the mocks used is gone.
+   ============================================================ */
+:root {
+  --bg: #3a6ea5;            /* desktop blue */
+  --face: #c0c0c0;          /* button face */
+  --ink: #000;
+  --ink-soft: #3f3f3f;
+  --accent: #000080;
+  --card: #fff;
+
+  /* The Windows bevel is three colours. Every raised or sunken edge
+     on the page is built from these four lines. */
+  --bevel-lt: #fff;
+  --bevel-hi: #dfdfdf;
+  --bevel-md: #808080;
+  --bevel-dk: #000;
+
+  --win: Tahoma, "MS Sans Serif", Geneva, Verdana, sans-serif;
+  --mono: "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+html { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font: 13px/1.5 var(--win);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px 12px 32px;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- the window ---------- */
+.window {
+  width: 100%;
+  max-width: 30rem;
+  background: var(--face);
+  padding: 3px;
+  border: 2px solid;
+  border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md), 2px 2px 0 rgba(0,0,0,.35);
+}
+
+.titlebar {
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 3px 4px 5px; margin-bottom: 2px;
+  color: #fff; font-weight: 700; font-size: 12px;
+  background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+}
+.titlebar .t { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titlebar b {
+  width: 17px; height: 15px; display: grid; place-items: center;
+  font-size: 10px; color: #000; background: var(--face);
+  border: 1px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+.titlebar .btns { display: flex; gap: 2px; }
+
+.menubar { display: flex; gap: 14px; padding: 3px 6px; margin-bottom: 2px; font-size: 12px; }
+.menubar u { text-decoration: underline; }
+
+.pane { padding: 14px; }
+
+.statusbar { display: flex; gap: 3px; margin-top: 4px; font-size: 11px; }
+.statusbar span {
+  padding: 3px 6px;
+  border: 1px solid; border-color: var(--bevel-md) var(--bevel-hi) var(--bevel-hi) var(--bevel-md);
+}
+.statusbar span:first-child { flex: 1; }
+
+/* ---------- hero ---------- */
+.hero { text-align: center; }
+
+.portrait {
+  width: 104px; height: 104px; margin: 0 auto 10px;
+  display: grid; place-items: center; overflow: hidden;
+  background: var(--card);
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+.portrait img, .portrait svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+
+h1 { margin: 0; font-size: clamp(1.25rem, 5.5vw, 1.7rem); font-weight: 700; line-height: 1.15; }
+
+.tagline { margin: 10px auto 0; max-width: 24rem; color: var(--ink-soft); }
+
+
+.rule { margin: 14px 0; height: 2px; border: 0; border-top: 1px solid var(--bevel-md); border-bottom: 1px solid var(--bevel-hi); }
+
+/* ---------- links ---------- */
+.links { display: flex; flex-direction: column; gap: 4px; }
+
+.link {
+  display: flex; align-items: center; gap: 10px; padding: 10px 11px;
+  background: var(--face);
+  border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
+  box-shadow: inset 1px 1px 0 var(--bevel-hi), inset -1px -1px 0 var(--bevel-md);
+}
+/* Press in on click, the way a real button did: swap the bevel corner-to-corner
+   and shift the padding 1px so the label physically moves. */
+.link:active {
+  border-color: var(--bevel-dk) var(--bevel-lt) var(--bevel-lt) var(--bevel-dk);
+  box-shadow: inset 1px 1px 0 var(--bevel-md), inset -1px -1px 0 var(--bevel-hi);
+  padding: 11px 10px 9px 12px;
+}
+.link:focus-visible { outline: 2px dotted #000; outline-offset: -5px; }
+
+.link .icon {
+  flex: 0 0 auto; width: 32px; height: 32px; display: grid; place-items: center;
+  background: var(--accent); color: #fff;
+}
+.link .icon svg { width: 18px; height: 18px; fill: currentColor; }
+.link .txt { display: flex; flex-direction: column; min-width: 0; }
+.link .label { font-weight: 700; }
+.link .handle { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link .chev { margin-left: auto; opacity: .5; }
+.link .chev svg { width: 15px; height: 15px; }
+
+
+/* ---------- photos ---------- */
+.gallery { margin-top: 16px; }
+.gallery[hidden] { display: none; }
+.gallery h2 { margin: 0 0 8px; font-size: 13px; font-weight: 700; }
+
+/* Two columns. On a phone that's two comfortable thumbnails per row;
+   at 30rem it's still only ~14rem each, so a third column would just
+   make everything small. */
+.tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+
+.tile { margin: 0; }
+.tile .frame {
+  aspect-ratio: 1; overflow: hidden; display: grid; place-items: center;
+  background: var(--card);
+  border: 2px solid; border-color: var(--bevel-md) var(--bevel-lt) var(--bevel-lt) var(--bevel-md);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 var(--bevel-hi);
+}
+.tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile .slot {
+  display: none; padding: 8px; text-align: center;
+  font: 11px/1.4 var(--mono); color: var(--ink-soft); word-break: break-all;
+}
+.tile.empty img { display: none; }
+.tile.empty .slot { display: block; }
+.tile.empty .frame { background: repeating-linear-gradient(45deg, #fff 0 6px, #ededed 6px 12px); }
+.tile figcaption { margin-top: 4px; font-size: 11px; color: var(--ink-soft); text-align: center; }
+
+footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--ink-soft); }
+
+@media (max-width: 380px) {
+  .pane { padding: 10px; }
+  .link { padding: 9px; }
+  .link .handle { font-size: 11px; }
+}
+</style>
+</head>
+
+<body>
+<div class="window">
+  <div class="titlebar">
+    <span class="t" id="tb-title"></span>
+    <span class="btns" aria-hidden="true"><b>_</b><b>□</b><b>✕</b></span>
+  </div>
+
+  <div class="menubar" aria-hidden="true">
+    <span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>H</u>elp</span>
+  </div>
+
+  <div class="pane">
+    <div class="hero">
+      <div class="portrait" id="portrait"></div>
+      <p class="eyebrow" id="eyebrow"></p>
+      <h1 id="title"></h1>
+      <p class="tagline" id="tagline"></p>
+    </div>
+
+    <hr class="rule">
+
+    <nav class="links" id="links" aria-label="Official links"></nav>
+
+    <section class="gallery" id="gallery" hidden>
+      <h2 id="gallery-title"></h2>
+      <div class="tiles" id="tiles"></div>
+    </section>
+
+    <footer><span id="footer-text"></span></footer>
+  </div>
+
+  <div class="statusbar" aria-hidden="true"><span id="status-text"></span><span id="obj-count"></span></div>
+</div>
+
+<script>
+/* Written by the Cat Lab publisher. Edit the site in the app, not here. */
+const CONFIG = {
+  "title": "El Meow Meow",
+  "eyebrow": "Official links · est. 2026",
+  "tagline": "Professional loaf. Occasional menace. All her official accounts live here.",
+  "windowTitle": "Official Links",
+  "statusText": "Done",
+  "galleryTitle": "Photos",
+  "footer": "© 2026 · all naps reserved",
+  "photo": "photos/portrait.jpeg",
+  "gallery": [
+    {
+      "src": "photos/photo-1.jpeg",
+      "caption": "How do I look"
+    },
+    {
+      "src": "photos/photo-2.png",
+      "caption": "Calculating..."
+    },
+    {
+      "src": "photos/photo-3.jpeg",
+      "caption": "A selfie I took"
+    },
+    {
+      "src": "photos/photo-4.jpeg",
+      "caption": "Purr pop mmmmm"
+    }
+  ],
+  "links": [
+    {
+      "label": "Instagram",
+      "handle": "@el.meow.meow1",
+      "url": "https://www.instagram.com/el.meow.meow1?igsi=a2FpNTJ6N3h6eGxy&utm_source=qr",
+      "icon": "instagram"
+    },
+    {
+      "label": "TikTok",
+      "handle": "@elmeowmeow29",
+      "url": "https://www.tiktok.com/@elmeowmeow29?_r=1&_t=ZT-994n1mrdv5S",
+      "icon": "tiktok"
+    },
+    {
+      "label": "Facebook",
+      "handle": "@El Meow Meow",
+      "url": "https://www.facebook.com/share/18PGtXN5V3/?mibextid=wwXIfr",
+      "icon": "facebook"
+    },
+    {
+      "label": "Business",
+      "handle": "elmeowmeowbusiness@gmail.com",
+      "url": "mailto:elmeowmeowbusiness@gmail.com",
+      "icon": "email"
+    }
+  ]
+};
+
+const ICONS = {
+  instagram: "M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077",
+
+  facebook: "M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z",
+
+  tiktok: "M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z",
+
+  youtube: "M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z",
+
+  x: "M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z",
+
+  email: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
+
+  link: "M10.6 13.4a1 1 0 0 1 0-1.4l1.4-1.4a1 1 0 0 1 1.4 1.4l-1.4 1.4a1 1 0 0 1-1.4 0zM7.8 16.2a4 4 0 0 1 0-5.7l2.1-2.1 1.4 1.4-2.1 2.1a2 2 0 0 0 2.8 2.8l2.1-2.1 1.4 1.4-2.1 2.1a4 4 0 0 1-5.6 0zm8.4-8.4a4 4 0 0 1 0 5.7l-2.1 2.1-1.4-1.4 2.1-2.1a2 2 0 1 0-2.8-2.8L9.9 11.4 8.5 10l2.1-2.1a4 4 0 0 1 5.6 0z"
+};
+
+const MAILTO_GLYPH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+
+const CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+const CAT_PLACEHOLDER = `
+<svg viewBox="0 0 100 100" role="img" aria-label="Illustrated cat portrait placeholder">
+  <rect width="100" height="100" fill="#000080" opacity=".12"/>
+  <path d="M22 44 L26 20 L44 33 A44 44 0 0 1 56 33 L74 20 L78 44 Z" fill="currentColor"/>
+  <circle cx="50" cy="60" r="27" fill="currentColor"/>
+  <circle cx="40" cy="56" r="4.2" fill="#fff"/>
+  <circle cx="60" cy="56" r="4.2" fill="#fff"/>
+  <path d="M50 66 l-4 3.5 4 3 4-3z" fill="#fff"/>
+  <path d="M24 60 h-9 M24 66 h-9 M76 60 h9 M76 66 h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+</svg>`;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+/* Images are loaded before they're shown, so a missing file degrades to the
+   drawn cat or a labelled empty slot instead of a broken-image icon. */
+function renderPortrait() {
+  const box = $("portrait");
+  box.innerHTML = CAT_PLACEHOLDER;
+  if (!CONFIG.photo) return;
+  const img = new Image();
+  img.alt = "Portrait";
+  img.addEventListener("load", () => { box.innerHTML = ""; box.appendChild(img); });
+  img.src = CONFIG.photo;
+}
+
+function renderGallery() {
+  const items = CONFIG.gallery || [];
+  if (!items.length) return;
+  $("gallery").hidden = false;
+  $("gallery-title").textContent = CONFIG.galleryTitle || "Photos";
+  const frag = document.createDocumentFragment();
+  items.forEach((item) => {
+    const fig = document.createElement("figure");
+    fig.className = "tile empty";
+    fig.innerHTML = `
+      <div class="frame">
+        <img alt="${esc(item.caption || "Photo")}">
+        <span class="slot">${esc(item.src)}</span>
+      </div>
+      ${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ""}`;
+    const img = fig.querySelector("img");
+    img.addEventListener("load", () => fig.classList.remove("empty"));
+    img.src = item.src;
+    frag.appendChild(fig);
+  });
+  $("tiles").appendChild(frag);
+}
+
+function renderLinks() {
+  const frag = document.createDocumentFragment();
+  (CONFIG.links || []).forEach((item) => {
+    const path = ICONS[item.icon] || ICONS.link;
+    const isMail = String(item.url).startsWith("mailto:");
+    const el = document.createElement("a");
+    el.className = "link";
+    el.href = item.url;
+    // mailto: hands off to whatever mail app the device has — Mail or Gmail on a phone,
+    // the desktop default otherwise. No target=_blank: that opens a dead tab first.
+    if (isMail) el.title = "Opens your email app";
+    if (!isMail) {
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+    }
+    el.innerHTML = `
+      <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg></span>
+      <span class="txt">
+        <span class="label">${esc(item.label)}</span>
+        ${item.handle ? `<span class="handle">${esc(item.handle)}</span>` : ""}
+      </span>
+      <span class="chev">${isMail ? MAILTO_GLYPH : CHEVRON}</span>`;
+    frag.appendChild(el);
+  });
+  $("links").appendChild(frag);
+}
+
+function render() {
+  $("tb-title").textContent = CONFIG.windowTitle || "Official Links";
+  $("eyebrow").textContent = CONFIG.eyebrow || "";
+  $("title").textContent = CONFIG.title || "";
+  $("tagline").textContent = CONFIG.tagline || "";
+  $("status-text").textContent = CONFIG.statusText || "Done";
+  $("obj-count").textContent = `${(CONFIG.links || []).length} object(s)`;
+  $("footer-text").textContent = CONFIG.footer || "";
+  renderPortrait();
+  renderLinks();
+  renderGallery();
+}
+
+render();
+</script>
+</body>
+</html>
