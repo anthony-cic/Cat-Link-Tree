@@ -290,8 +290,8 @@ const CONFIG = {
     },
     {
       "label": "TikTok",
-      "handle": "https://www.tiktok.com/@elmeowmeow29?_r=1&_t=ZT-994n1mrdv5S",
-      "url": "https://@elmeowmeow29",
+      "handle": "@elmeowmeow29",
+      "url": "https://www.tiktok.com/@elmeowmeow29?_r=1&_t=ZT-994n1mrdv5S",
       "icon": "tiktok",
       "followers": 3500,
       "avgViews": 105900,
@@ -375,8 +375,8 @@ function renderStats() {
   stats.forEach((s) => {
     const metrics = [
       ["Followers", s.followers != null ? compact(s.followers) : null],
-      ["Avg. views", s.avgViews != null ? compact(s.avgViews) : null],
-      ["Avg. likes", s.avgLikes != null ? compact(s.avgLikes) : null],
+      ["Total views", s.totalViews != null ? compact(s.totalViews) : null],
+      ["Total likes", s.totalLikes != null ? compact(s.totalLikes) : null],
       ["Engagement", s.engagement || null],
     ].filter(([, v]) => v);
     if (!metrics.length && !s.note) return;   // nothing to say about this platform yet
