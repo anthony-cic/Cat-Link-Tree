@@ -525,9 +525,11 @@ function wireForm() {
         sent.textContent = "Sent — thanks, we'll be in touch shortly.";
       } else {
         // The server's own wording is more specific than anything generic here
-        // (rate limited, daily cap reached, a named invalid field).
+        // (rate limited, daily cap reached, a named invalid field). The address
+        // comes from CONFIG, never from the response: the server's inbox is an
+        // internal detail and must not be shown to visitors.
         sent.textContent = data.error || "That didn't go through — please try again.";
-        if (data.fallback) sent.textContent += ` (${data.fallback})`;
+        if (CONFIG.contactEmail) sent.textContent += ` (${CONFIG.contactEmail})`;
       }
     } catch {
       // Offline, DNS failure, a blocking extension. The message the visitor
