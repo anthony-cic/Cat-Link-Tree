@@ -121,9 +121,10 @@ h1 { margin: 0; font-size: clamp(1.25rem, 5.5vw, 1.7rem); font-weight: 700; line
 .rule { margin: 14px 0; height: 2px; border: 0; border-top: 1px solid var(--bevel-md); border-bottom: 1px solid var(--bevel-hi); }
 
 /* ---------- links ---------- */
-.links { display: flex; flex-direction: column; gap: 4px; }
+.links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
 
 .link {
+  grid-column: 1 / -1;
   display: flex; align-items: center; gap: 10px; padding: 10px 11px;
   background: var(--face);
   border: 2px solid; border-color: var(--bevel-lt) var(--bevel-dk) var(--bevel-dk) var(--bevel-lt);
@@ -148,6 +149,15 @@ h1 { margin: 0; font-size: clamp(1.25rem, 5.5vw, 1.7rem); font-weight: 700; line
 .link .handle { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .link .chev { margin-left: auto; opacity: .5; }
 .link .chev svg { width: 15px; height: 15px; }
+
+/* The support/contact actions share one compact row, as in the featured mock. */
+.link-compact { grid-column: auto; justify-content: center; gap: 6px; min-height: 36px; padding: 5px 8px; }
+.link-compact:active { padding: 6px 7px 4px 9px; }
+.link-compact .icon { width: 16px; height: 16px; background: transparent; color: var(--accent); }
+.link-compact .icon svg { width: 16px; height: 16px; }
+.link-compact .label { font-weight: 400; overflow-wrap: anywhere; }
+.link-compact .handle, .link-compact .chev { display: none; }
+@media (pointer: coarse) { .link-compact { min-height: 44px; } }
 
 
 /* ---------- media-kit button ---------- */
@@ -227,6 +237,8 @@ footer { margin-top: 16px; text-align: center; font-size: 11px; color: var(--ink
 @media (max-width: 380px) {
   .pane { padding: 10px; }
   .link { padding: 9px; }
+  .link-compact { padding: 5px 8px; }
+  .link-compact:active { padding: 6px 7px 4px 9px; }
   .link .handle { font-size: 11px; }
   .store { gap: 8px; }
   .store-art { width: 42px; font-size: 26px; }
@@ -444,7 +456,7 @@ function renderLinks() {
     const path = ICONS[item.icon] || ICONS.link;
     const isMail = String(item.url).startsWith("mailto:");
     const el = document.createElement("a");
-    el.className = "link";
+    el.className = item.icon === "kofi" || isMail ? "link link-compact" : "link";
     el.href = item.url;
     // mailto: hands off to whatever mail app the device has — Mail or Gmail on a phone,
     // the desktop default otherwise. No target=_blank: that opens a dead tab first.
